@@ -20,5 +20,5 @@ I'm making this game for the game jam. It is similar to the times table game I m
 * ticking sound on timer/ sound settings
 
 
-### Figma Mockup
+## Figma Mockup
 https://www.figma.com/proto/NYeS3Krgw9e82E4po7nla2/Untitled?node-id=1%3A132&frame-preset-name=Desktop&scaling=min-zoom&page-id=0%3A1
