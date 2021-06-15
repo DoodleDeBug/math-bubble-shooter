@@ -10,6 +10,7 @@ I'm making this game for the game jam. It is similar to the times table game I m
 * a timer
 * results page
 * simple pop effect on clicking bubble
+* cool background
 
 ### Possible extra features:
 * age apropriate questions/ select age
@@ -18,6 +19,7 @@ I'm making this game for the game jam. It is similar to the times table game I m
 * shooting effect
 * general animations
 * ticking sound on timer/ sound settings
+* leaderboard
 
 
 ## Figma Mockup
