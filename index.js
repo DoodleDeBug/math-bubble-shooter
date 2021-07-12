@@ -14,7 +14,7 @@ const game = (() => {
   );
   //variables
   let gameOption;
-  let qNum;
+  let qNum = 1;
   let answer;
 
   function whichGame(e) {
@@ -37,6 +37,9 @@ const game = (() => {
     answer = e.target.innerText;
     console.log(answer);
     pop(e);
+    setTimeout(clearBubbles(), 5000);
+    // clearBubbles();
+    nextQ(gameOption);
   }
 
   function pop(e) {
@@ -44,20 +47,71 @@ const game = (() => {
     console.log(bubbleNum);
     e.target.remove();
   }
+
+  function clearBubbles() {
+    answerBubbles.forEach((bubble) => bubble.remove());
+  }
+
+  function nextQ(gameOption) {
+    if (gameOption == "addition") {
+      addition.nextQ();
+    } else if (gameOption == "subtraction") {
+      subtraction.nextQ();
+    } else if (gameOption == "multiplication") {
+      multiplication.nextQ();
+    } else if (gameOption == "division") {
+      division.nextQ();
+    }
+
+    updateQNum(qNum);
+  }
+
+  function updateQNum(qNum) {
+    qNum++;
+    qNumDisplay.innerText = `Q${qNum}`;
+  }
 })();
 
 const addition = (() => {
   //some code
+  function nextQ() {
+    console.log("A");
+  }
+
+  return {
+    nextQ,
+  };
 })();
 
 const subtraction = (() => {
   //some code
+  function nextQ() {
+    console.log("S");
+  }
+
+  return {
+    nextQ,
+  };
 })();
 
 const multiplication = (() => {
   //some code
+  function nextQ() {
+    console.log("M");
+  }
+
+  return {
+    nextQ,
+  };
 })();
 
 const division = (() => {
   //some code
+  function nextQ() {
+    console.log("D");
+  }
+
+  return {
+    nextQ,
+  };
 })();
