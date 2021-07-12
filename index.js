@@ -37,7 +37,7 @@ const game = (() => {
     answer = e.target.innerText;
     console.log(answer);
     pop(e);
-    setTimeout(clearBubbles(), 5000);
+    setTimeout(clearBubbles, 500);
     // clearBubbles();
     nextQ(gameOption);
   }
