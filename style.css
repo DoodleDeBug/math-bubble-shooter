@@ -20,7 +20,6 @@
   padding: 1rem 2rem;
   box-shadow: 1px 1px 1px;
 }
-
 .btn:hover {
   background-color: #3c22e2;
 }
@@ -38,8 +37,7 @@
   padding: 20%;
   z-index: 100;
 }
-
-.modal-contents {
+.modal .modal-contents {
   padding: 0 1rem;
   width: 100%;
   min-width: 250px;
@@ -60,31 +58,13 @@
   height: 100%;
   width: 100%;
 }
-
-main {
+.gamePage main {
   height: 100%;
   width: 100%;
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.bubble {
-  color: #17067b;
-  font-size: 25px;
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bubble:hover {
-  height: 110px;
-  width: 110px;
-  cursor: pointer;
 }
 
 .bubbleContainer {
@@ -96,75 +76,77 @@ main {
   padding: 2rem;
   margin: 0 2rem;
 }
-
-.b1,
-.b3,
-.b5,
-.b7,
-.b9,
-.b11 {
+.bubbleContainer .bubble {
+  color: #17067b;
+  font-size: 25px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bubbleContainer .bubble:hover {
+  height: 110px;
+  width: 110px;
+  cursor: pointer;
+}
+.bubbleContainer .b1,
+.bubbleContainer .b3,
+.bubbleContainer .b5,
+.bubbleContainer .b7,
+.bubbleContainer .b9,
+.bubbleContainer .b11 {
   grid-row: 1/2;
 }
-
-.b2,
-.b4,
-.b6,
-.b8,
-.b10 {
+.bubbleContainer .b2,
+.bubbleContainer .b4,
+.bubbleContainer .b6,
+.bubbleContainer .b8,
+.bubbleContainer .b10 {
   grid-row: 2/3;
 }
-
-.b1 {
+.bubbleContainer .b1 {
   grid-column: 1/2;
   background-color: #b39dde;
 }
-
-.b2 {
+.bubbleContainer .b2 {
   grid-column: 2/3;
   background-color: #fef07a;
 }
-
-.b3 {
+.bubbleContainer .b3 {
   grid-column: 3/4;
   background-color: #8cecf3;
 }
-
-.b4 {
+.bubbleContainer .b4 {
   grid-column: 4/5;
   background-color: #e46d5c;
 }
-
-.b5 {
+.bubbleContainer .b5 {
   grid-column: 5/6;
   background-color: #a6db4f;
 }
-
-.b6 {
+.bubbleContainer .b6 {
   grid-column: 6/7;
   background-color: #8cecf3;
 }
-
-.b7 {
+.bubbleContainer .b7 {
   grid-column: 7/8;
   background-color: #f9ae48;
 }
-
-.b8 {
+.bubbleContainer .b8 {
   grid-column: 8/9;
   background-color: #b39dde;
 }
-
-.b9 {
+.bubbleContainer .b9 {
   grid-column: 9/10;
   background-color: #fef07a;
 }
-
-.b10 {
+.bubbleContainer .b10 {
   grid-column: 10/11;
   background-color: #f9ae48;
 }
-
-.b11 {
+.bubbleContainer .b11 {
   grid-column: 11/12;
   background-color: #e46d5c;
 }
@@ -176,8 +158,7 @@ main {
   flex-direction: column;
   justify-content: center;
 }
-
-.questionBox {
+.center .questionBox {
   background-color: white;
   color: #5035f9;
   width: 500px;
@@ -198,8 +179,7 @@ footer {
   position: fixed;
   width: 100%;
 }
-
-.qNum {
+footer .qNum {
   width: 70px;
   height: 70px;
   color: #17067b;
@@ -210,8 +190,7 @@ footer {
   border-radius: 5px;
   float: left;
 }
-
-.timer {
+footer .timer {
   width: 70px;
   height: 70px;
   color: #17067b;
@@ -236,7 +215,6 @@ footer {
     height: 90px;
     width: 90px;
   }
-
   .bubble:hover {
     height: 100px;
     width: 100px;
