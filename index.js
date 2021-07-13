@@ -156,10 +156,10 @@ const addition = (() => {
 
     setTimeout(function () {
       game.updateQBox(question);
-    }, 1000);
+    }, 700);
     setTimeout(function () {
       game.render(answerChoices);
-    }, 1000);
+    }, 700);
 
     console.log(`Actual answer = ${acutalAnswer}`);
     // console.log(answerChoices);
