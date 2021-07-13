@@ -129,29 +129,25 @@ const game = (() => {
 
 const addition = (() => {
   function nextQ() {
-    let num1 = Math.floor(Math.random() * 50) + 1;
-    let num2 = Math.floor(Math.random() * 50) + 1;
+    let num1 = Math.floor(Math.random() * 20) + 1;
+    let num2 = Math.floor(Math.random() * 30) + 1;
 
     let randomIndex = Math.floor(Math.random() * 10);
 
     let question = `${num1} + ${num2}`;
-    let acutalAnswer = num1 + num2;
+    let actualAnswer = num1 + num2;
 
-    let answerChoices = generateChoices();
-    answerChoices.splice(randomIndex, 0, acutalAnswer);
+    let answerChoices = Array.from(myRandomInts(11, 50));
+    answerChoices.shift();
+    answerChoices.splice(randomIndex, 0, actualAnswer);
 
-    function generateChoices() {
-      let choices = [];
-
-      for (let i = 0; i < 11; i++) {
-        let c = Math.floor(Math.random() * 50) + 1;
-        if (choices.includes(c)) {
-          c = Math.floor(Math.random() * 50) + 1;
-        }
-        choices.push(c);
+    function myRandomInts(quantity, max) {
+      const set = new Set();
+      set.add(actualAnswer);
+      while (set.size < quantity) {
+        set.add(Math.floor(Math.random() * max) + 1);
       }
-
-      return choices;
+      return set;
     }
 
     setTimeout(function () {
@@ -161,8 +157,7 @@ const addition = (() => {
       game.render(answerChoices);
     }, 700);
 
-    console.log(`Actual answer = ${acutalAnswer}`);
-    // console.log(answerChoices);
+    console.log(`Actual answer = ${actualAnswer}`);
   }
 
   return {
