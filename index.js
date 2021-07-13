@@ -60,6 +60,7 @@ const game = (() => {
   }
 
   function clearBubbles() {
+    const answerBubbles = document.querySelectorAll(".bubble");
     answerBubbles.forEach((bubble) => bubble.remove());
   }
 
@@ -95,6 +96,8 @@ const game = (() => {
       bubble.innerText = choice;
       container.appendChild(bubble);
     });
+
+    addBubbleListener();
   }
 
   function startTimer() {
@@ -123,37 +126,39 @@ const game = (() => {
 })();
 
 const addition = (() => {
-  let num1 = Math.floor(Math.random() * 50) + 1;
-  let num2 = Math.floor(Math.random() * 50) + 1;
-
-  let randomIndex = Math.floor(Math.random() * 10);
-
-  let question = `${num1} + ${num2}`;
-  let acutalAnswer = num1 + num2;
-
-  let answerChoices = generateChoices();
-  answerChoices.splice(randomIndex, 0, acutalAnswer);
-
   function nextQ() {
+    let num1 = Math.floor(Math.random() * 50) + 1;
+    let num2 = Math.floor(Math.random() * 50) + 1;
+
+    let randomIndex = Math.floor(Math.random() * 10);
+
+    let question = `${num1} + ${num2}`;
+    let acutalAnswer = num1 + num2;
+
+    let answerChoices = generateChoices();
+    answerChoices.splice(randomIndex, 0, acutalAnswer);
+
+    function generateChoices() {
+      let choices = [];
+
+      for (let i = 0; i < 11; i++) {
+        let c = Math.floor(Math.random() * 50) + 1;
+        if (choices.includes(c)) {
+          c = Math.floor(Math.random() * 50) + 1;
+        }
+        choices.push(c);
+      }
+
+      return choices;
+    }
+
     game.updateQBox(question);
-    game.render(answerChoices);
+    setTimeout(function () {
+      game.render(answerChoices);
+    }, 1000);
 
     console.log(`answer = ${acutalAnswer}`);
     // console.log(answerChoices);
-  }
-
-  function generateChoices() {
-    let choices = [];
-
-    for (let i = 0; i < 11; i++) {
-      let c = Math.floor(Math.random() * 50) + 1;
-      if (choices.includes(c)) {
-        c = Math.floor(Math.random() * 50) + 1;
-      }
-      choices.push(c);
-    }
-
-    return choices;
   }
 
   return {
