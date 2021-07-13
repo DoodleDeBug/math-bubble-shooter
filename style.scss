@@ -217,6 +217,7 @@ footer {
     grid-template-columns: repeat(11, 85px);
   }
 }
+
 @media (max-width: 1000px) {
   .bubbleContainer {
     grid-template-columns: repeat(11, 70px);
@@ -231,4 +232,4 @@ footer {
     height: 100px;
     width: 100px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
