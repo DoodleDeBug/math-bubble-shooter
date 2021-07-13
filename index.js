@@ -12,6 +12,7 @@ const game = (() => {
   answerBubbles.forEach((bubble) =>
     bubble.addEventListener("click", selectAnswer)
   );
+
   //variables
   let gameOption;
   let qNum = 1;
@@ -63,12 +64,16 @@ const game = (() => {
       division.nextQ();
     }
 
-    updateQNum(qNum);
+    updateQNum();
   }
 
-  function updateQNum(qNum) {
+  function updateQNum() {
     qNum++;
     qNumDisplay.innerText = `Q${qNum}`;
+  }
+
+  function updateQBox(question) {
+    qBox.innerText = question;
   }
 
   function startTimer() {
@@ -90,6 +95,9 @@ const game = (() => {
     //   }
     // }
   }
+  return {
+    updateQBox,
+  };
 })();
 
 const addition = (() => {
