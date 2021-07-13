@@ -47,15 +47,17 @@ const game = (() => {
 
   function selectAnswer(e) {
     answer = e.target.innerText;
-    console.log(answer);
-    pop(e);
-    setTimeout(clearBubbles, 500);
-    nextQ(gameOption);
+    console.log(` you picked: ${answer}`);
+    if (Array.from(e.target.classList).includes("bubble")) {
+      pop(e);
+      setTimeout(clearBubbles, 400);
+      nextQ(gameOption);
+    }
   }
 
   function pop(e) {
-    let bubbleNum = e.target.classList[1];
-    console.log(bubbleNum);
+    // let bubbleNum = e.target.classList[1];
+    // console.log(bubbleNum);
     e.target.remove();
   }
 
@@ -152,12 +154,14 @@ const addition = (() => {
       return choices;
     }
 
-    game.updateQBox(question);
+    setTimeout(function () {
+      game.updateQBox(question);
+    }, 1000);
     setTimeout(function () {
       game.render(answerChoices);
     }, 1000);
 
-    console.log(`answer = ${acutalAnswer}`);
+    console.log(`Actual answer = ${acutalAnswer}`);
     // console.log(answerChoices);
   }
 
