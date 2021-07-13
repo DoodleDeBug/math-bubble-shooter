@@ -31,6 +31,7 @@ const game = (() => {
     console.log(gameOption);
 
     modal.classList.toggle("hidden");
+    startTimer();
   }
 
   function selectAnswer(e) {
@@ -38,7 +39,6 @@ const game = (() => {
     console.log(answer);
     pop(e);
     setTimeout(clearBubbles, 500);
-    // clearBubbles();
     nextQ(gameOption);
   }
 
@@ -69,6 +69,26 @@ const game = (() => {
   function updateQNum(qNum) {
     qNum++;
     qNumDisplay.innerText = `Q${qNum}`;
+  }
+
+  function startTimer() {
+    // //code for 2 min timer
+    // const timeGiven = 1;
+    // let time = timeGiven * 60;
+    // setInterval(countdown, 1000);
+    // function countdown() {
+    //   if (time <= 0) {
+    //     timerDisplay.innerText = `0:00`;
+    //     clearInterval(countdown);
+    //     alert("game over");
+    //   } else {
+    //     const mins = Math.floor(time / 60);
+    //     let seconds = time % 60;
+    //     seconds = seconds < 2 ? "0" + seconds : seconds;
+    //     timerDisplay.innerText = `${mins}:${seconds}`;
+    //     time--;
+    //   }
+    // }
   }
 })();
 
