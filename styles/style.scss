@@ -53,16 +53,10 @@
 }
 
 main {
-  @include flexCenter();
-
+  @extend .modal;
   background-color: $background;
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 100%;
   padding: 3rem 2rem;
-
-  flex-direction: column;
+  z-index: 0;
 }
 
 .center {
