@@ -117,9 +117,9 @@ const game = (() => {
     }, 700);
     setTimeout(updateQNum, 700);
 
-    console.log(questionList);
-    console.log(actualAnswerList);
-    console.log(userAnswerList);
+    // console.log(questionList);
+    // console.log(actualAnswerList);
+    // console.log(userAnswerList);
   }
 
   function updateQNum() {
