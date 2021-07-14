@@ -13,10 +13,12 @@ const game = (() => {
 
   //variables
   let gameOption;
-  let qNum = 1;
+  let qNum = 0;
   let answer;
 
   function whichGame(e) {
+    setTimeout(updateQNum, 700);
+
     if (e.target.innerText == "Addition") {
       gameOption = "addition";
       addition.nextQ();
@@ -77,7 +79,7 @@ const game = (() => {
       division.nextQ();
     }
 
-    updateQNum();
+    setTimeout(updateQNum, 700);
   }
 
   function updateQNum() {
