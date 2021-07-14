@@ -60,6 +60,8 @@ const game = (() => {
   function pop(e) {
     // let bubbleNum = e.target.classList[1];
     // console.log(bubbleNum);
+    let popSound = new Audio("./sounds/pop.mp3");
+    popSound.play();
     e.target.remove();
   }
 
