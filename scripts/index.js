@@ -15,6 +15,9 @@ const game = (() => {
   let gameOption;
   let qNum = 0;
   let answer;
+  let questionList = [];
+  let actualAnswerList = [];
+  let userAnswerList = [];
 
   function whichGame(e) {
     if (e.target.innerText == "Addition") {
@@ -40,9 +43,18 @@ const game = (() => {
     );
   }
 
+  function removeBubbleListener() {
+    const answerBubbles = document.querySelectorAll(".bubble");
+
+    answerBubbles.forEach((bubble) =>
+      bubble.removeEventListener("click", selectAnswer)
+    );
+  }
+
   function selectAnswer(e) {
     answer = e.target.innerText;
-    console.log(` you picked: ${answer}`);
+    userAnswerList.push(answer);
+
     if (Array.from(e.target.classList).includes("bubble")) {
       pop(e);
       setTimeout(clearBubbles, 400);
@@ -81,6 +93,9 @@ const game = (() => {
       division.nextQ();
     }
 
+    questionList.push(data[0]);
+    actualAnswerList.push(data[1]);
+
     function myRandomInts(quantity, max) {
       const set = new Set();
       set.add(data[1]);
@@ -101,6 +116,10 @@ const game = (() => {
       render(answerChoices);
     }, 700);
     setTimeout(updateQNum, 700);
+
+    console.log(questionList);
+    console.log(actualAnswerList);
+    console.log(userAnswerList);
   }
 
   function updateQNum() {
@@ -128,7 +147,7 @@ const game = (() => {
   function startTimer() {
     let interval = setInterval(countdown, 1000);
     let counter = 0;
-    let allocatedTime = 10;
+    let allocatedTime = 30;
 
     function convertSeconds(s) {
       let mins = Math.floor(s / 60);
@@ -146,8 +165,28 @@ const game = (() => {
       if (counter == allocatedTime) {
         alert("game over");
         clearInterval(interval);
+        removeBubbleListener();
+        compileResults();
       }
     }
+  }
+
+  function compileResults() {
+    let points = 0;
+
+    for (let i = 0; i < qNum - 1; i++) {
+      // console.log(
+      //   `Q${i + 1}. ${questionList[i]} answer = ${
+      //     actualAnswerList[i]
+      //   } your answer = ${userAnswerList[i]}`
+      // );
+
+      if (userAnswerList[i] == actualAnswerList[i]) {
+        points++;
+      }
+    }
+
+    console.log(points);
   }
 })();
 
@@ -155,8 +194,6 @@ const addition = (() => {
   function createQ(num1, num2) {
     let question = `${num1} + ${num2}`;
     let actualAnswer = num1 + num2;
-
-    console.log(`Actual answer = ${actualAnswer}`);
 
     return [question, actualAnswer];
   }
