@@ -105,24 +105,30 @@ const game = (() => {
   }
 
   function startTimer() {
-    // //code for 2 min timer
-    // const timeGiven = 1;
-    // let time = timeGiven * 60;
-    // setInterval(countdown, 1000);
-    // function countdown() {
-    //   if (time <= 0) {
-    //     timerDisplay.innerText = `0:00`;
-    //     clearInterval(countdown);
-    //     alert("game over");
-    //   } else {
-    //     const mins = Math.floor(time / 60);
-    //     let seconds = time % 60;
-    //     seconds = seconds < 2 ? "0" + seconds : seconds;
-    //     timerDisplay.innerText = `${mins}:${seconds}`;
-    //     time--;
-    //   }
-    // }
+    let interval = setInterval(countdown, 1000);
+    let counter = 0;
+    let allocatedTime = 10;
+
+    function convertSeconds(s) {
+      let mins = Math.floor(s / 60);
+      let seconds = s % 60;
+      if (seconds < 10) {
+        return `${mins}:0${seconds}`;
+      }
+      return `${mins}:${seconds}`;
+    }
+
+    function countdown() {
+      counter++;
+      timerDisplay.innerText = convertSeconds(allocatedTime - counter);
+
+      if (counter == allocatedTime) {
+        alert("game over");
+        clearInterval(interval);
+      }
+    }
   }
+
   return {
     updateQBox,
     render,
