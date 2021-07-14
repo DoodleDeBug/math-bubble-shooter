@@ -17,25 +17,18 @@ const game = (() => {
   let answer;
 
   function whichGame(e) {
-    setTimeout(updateQNum, 700);
-
     if (e.target.innerText == "Addition") {
       gameOption = "addition";
-      addition.nextQ();
     } else if (e.target.innerText == "Subtraction") {
       gameOption = "subtraction";
-      subtraction.nextQ();
     } else if (e.target.innerText == "Multiplication") {
       gameOption = "multiplication";
-      multiplication.nextQ();
     } else if (e.target.innerText == "Division") {
       gameOption = "division";
-      division.nextQ();
     }
 
-    // console.log(gameOption);
-
     modal.classList.toggle("hidden");
+    nextQ(gameOption);
     startTimer();
   }
 
@@ -71,8 +64,15 @@ const game = (() => {
   }
 
   function nextQ(gameOption) {
+    let num1 = Math.floor(Math.random() * 20) + 1;
+    let num2 = Math.floor(Math.random() * 30) + 1;
+
+    let randomIndex = Math.floor(Math.random() * 10);
+
+    let data;
+
     if (gameOption == "addition") {
-      addition.nextQ();
+      data = addition.createQ(num1, num2);
     } else if (gameOption == "subtraction") {
       subtraction.nextQ();
     } else if (gameOption == "multiplication") {
@@ -81,6 +81,25 @@ const game = (() => {
       division.nextQ();
     }
 
+    function myRandomInts(quantity, max) {
+      const set = new Set();
+      set.add(data[1]);
+      while (set.size < quantity) {
+        set.add(Math.floor(Math.random() * max) + 1);
+      }
+      return set;
+    }
+
+    let answerChoices = Array.from(myRandomInts(11, 50));
+    answerChoices.shift();
+    answerChoices.splice(randomIndex, 0, data[1]);
+
+    setTimeout(function () {
+      updateQBox(data[0]);
+    }, 700);
+    setTimeout(function () {
+      render(answerChoices);
+    }, 700);
     setTimeout(updateQNum, 700);
   }
 
@@ -130,48 +149,20 @@ const game = (() => {
       }
     }
   }
-
-  return {
-    updateQBox,
-    render,
-  };
 })();
 
 const addition = (() => {
-  function nextQ() {
-    let num1 = Math.floor(Math.random() * 20) + 1;
-    let num2 = Math.floor(Math.random() * 30) + 1;
-
-    let randomIndex = Math.floor(Math.random() * 10);
-
+  function createQ(num1, num2) {
     let question = `${num1} + ${num2}`;
     let actualAnswer = num1 + num2;
 
-    let answerChoices = Array.from(myRandomInts(11, 50));
-    answerChoices.shift();
-    answerChoices.splice(randomIndex, 0, actualAnswer);
-
-    function myRandomInts(quantity, max) {
-      const set = new Set();
-      set.add(actualAnswer);
-      while (set.size < quantity) {
-        set.add(Math.floor(Math.random() * max) + 1);
-      }
-      return set;
-    }
-
-    setTimeout(function () {
-      game.updateQBox(question);
-    }, 700);
-    setTimeout(function () {
-      game.render(answerChoices);
-    }, 700);
-
     console.log(`Actual answer = ${actualAnswer}`);
+
+    return [question, actualAnswer];
   }
 
   return {
-    nextQ,
+    createQ,
   };
 })();
 
