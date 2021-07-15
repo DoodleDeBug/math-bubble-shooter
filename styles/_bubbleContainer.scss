@@ -146,19 +146,23 @@
       grid-row: 3/4;
     }
 
-    .b1 {
+    .b1,
+    .b8 {
       grid-column: 1/2;
     }
 
-    .b2 {
+    .b2,
+    .b9 {
       grid-column: 3/4;
     }
 
-    .b3 {
+    .b3,
+    .b10 {
       grid-column: 5/6;
     }
 
-    .b4 {
+    .b4,
+    .b11 {
       grid-column: 7/8;
     }
 
@@ -173,29 +177,13 @@
     .b7 {
       grid-column: 6/7;
     }
-
-    .b8 {
-      grid-column: 1/2;
-    }
-
-    .b9 {
-      grid-column: 3/4;
-    }
-
-    .b10 {
-      grid-column: 5/6;
-    }
-
-    .b11 {
-      grid-column: 7/8;
-    }
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 730px) {
   .bubbleContainer {
     grid-template-columns: repeat(5, 100px);
-    grid-template-rows: repeat(5, 100px);
+    grid-template-rows: repeat(5, 90px);
 
     .b1,
     .b2 {
