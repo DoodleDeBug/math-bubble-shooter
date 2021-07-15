@@ -5,7 +5,7 @@ const game = (() => {
   const qBox = document.querySelector(".questionBox");
   const qNumDisplay = document.querySelector(".qNum");
   const timerDisplay = document.querySelector(".timer");
-
+  const main = document.querySelector("main");
   const container = document.querySelector(".bubbleContainer");
 
   //add event listeners
@@ -167,8 +167,17 @@ const game = (() => {
         clearInterval(interval);
         removeBubbleListener();
         compileResults();
+        navigateToResults();
       }
     }
+  }
+
+  function navigateToResults() {
+    const resultsBtn = document.createElement("a");
+    resultsBtn.setAttribute("href", "/pages/results.html");
+    resultsBtn.classList.add("btn");
+    resultsBtn.innerText = "See Results";
+    main.appendChild(resultsBtn);
   }
 
   function compileResults() {
