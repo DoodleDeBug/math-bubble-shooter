@@ -2,11 +2,13 @@ const game = (() => {
   //cache DOm
   const optionBtns = document.querySelectorAll(".options");
   const modal = document.querySelector(".modal");
+
+  const main = document.querySelector("main");
+  const container = document.querySelector(".bubbleContainer"); /////////////////////////bubble container
+
   const qBox = document.querySelector(".questionBox");
   const qNumDisplay = document.querySelector(".qNum");
   const timerDisplay = document.querySelector(".timer");
-  const main = document.querySelector("main");
-  const container = document.querySelector(".bubbleContainer");
 
   //add event listeners
   optionBtns.forEach((btn) => btn.addEventListener("click", whichGame));
@@ -33,46 +35,6 @@ const game = (() => {
     modal.classList.toggle("hidden");
     nextQ(gameOption);
     startTimer();
-  }
-
-  function addBubbleListener() {
-    const answerBubbles = document.querySelectorAll(".bubble");
-
-    answerBubbles.forEach((bubble) =>
-      bubble.addEventListener("click", selectAnswer)
-    );
-  }
-
-  function removeBubbleListener() {
-    const answerBubbles = document.querySelectorAll(".bubble");
-
-    answerBubbles.forEach((bubble) =>
-      bubble.removeEventListener("click", selectAnswer)
-    );
-  }
-
-  function selectAnswer(e) {
-    answer = e.target.innerText;
-    userAnswerList.push(answer);
-
-    if (Array.from(e.target.classList).includes("bubble")) {
-      pop(e);
-      setTimeout(clearBubbles, 400);
-      nextQ(gameOption);
-    }
-  }
-
-  function pop(e) {
-    // let bubbleNum = e.target.classList[1];
-    // console.log(bubbleNum);
-    let popSound = new Audio("./sounds/pop.mp3");
-    popSound.play();
-    e.target.remove();
-  }
-
-  function clearBubbles() {
-    const answerBubbles = document.querySelectorAll(".bubble");
-    answerBubbles.forEach((bubble) => bubble.remove());
   }
 
   function nextQ(gameOption) {
@@ -122,16 +84,8 @@ const game = (() => {
     // console.log(userAnswerList);
   }
 
-  function updateQNum() {
-    qNum++;
-    qNumDisplay.innerText = `Q${qNum}`;
-  }
-
-  function updateQBox(question) {
-    qBox.innerText = question;
-  }
-
   function render(choices) {
+    /////////////////////////bubble container
     choices.forEach((choice) => {
       let i = choices.indexOf(choice) + 1;
       let className = `b${i}`;
@@ -142,6 +96,48 @@ const game = (() => {
     });
 
     addBubbleListener();
+  }
+
+  function addBubbleListener() {
+    /////////////////////////bubble container
+    const answerBubbles = document.querySelectorAll(".bubble");
+
+    answerBubbles.forEach((bubble) =>
+      bubble.addEventListener("click", selectAnswer)
+    );
+  }
+
+  function selectAnswer(e) {
+    answer = e.target.innerText;
+    userAnswerList.push(answer);
+
+    if (Array.from(e.target.classList).includes("bubble")) {
+      pop(e);
+      setTimeout(clearBubbles, 400);
+      nextQ(gameOption);
+    }
+  }
+
+  function pop(e) {
+    /////////////////////////bubble container
+    let popSound = new Audio("./sounds/pop.mp3");
+    popSound.play();
+    e.target.remove();
+  }
+
+  function clearBubbles() {
+    /////////////////////////bubble container
+    const answerBubbles = document.querySelectorAll(".bubble");
+    answerBubbles.forEach((bubble) => bubble.remove());
+  }
+
+  function updateQNum() {
+    qNum++;
+    qNumDisplay.innerText = `Q${qNum}`;
+  }
+
+  function updateQBox(question) {
+    qBox.innerText = question;
   }
 
   function startTimer() {
@@ -172,7 +168,17 @@ const game = (() => {
     }
   }
 
+  function removeBubbleListener() {
+    /////////////////////////bubble container
+    const answerBubbles = document.querySelectorAll(".bubble");
+
+    answerBubbles.forEach((bubble) =>
+      bubble.removeEventListener("click", selectAnswer)
+    );
+  }
+
   function navigateToResults() {
+    // temporary - create button to go to results page
     const resultsBtn = document.createElement("a");
     resultsBtn.setAttribute("href", "/pages/results.html");
     resultsBtn.classList.add("btn");
