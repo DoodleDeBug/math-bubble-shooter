@@ -189,11 +189,9 @@ const game = (() => {
     for (let i = 0; i < qNum - 1; i++) {
       if (userAnswerList[i] == actualAnswerList[i]) {
         points++;
-        resultsList[`Q${i + 1}. ${questionList[i]} = ${userAnswerList[i]}`] =
-          "correct";
+        resultsList[`${questionList[i]} = ${userAnswerList[i]}`] = "correct";
       } else {
-        resultsList[`Q${i + 1}. ${questionList[i]} = ${userAnswerList[i]}`] =
-          "incorrect";
+        resultsList[`${questionList[i]} = ${userAnswerList[i]}`] = "incorrect";
       }
     }
 

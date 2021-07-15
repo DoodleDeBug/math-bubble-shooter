@@ -8,43 +8,74 @@
   box-sizing: border-box;
 }
 .resultsPage {
+  @include flexCenter();
+  justify-content: space-between;
+  flex-direction: column;
   background-color: $background;
   position: fixed;
   top: 0;
   height: 100%;
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 4rem;
 }
 
 h1 {
   @include flexCenter();
   font-size: 80px;
+}
 
-  .red {
-    color: $red;
-  }
-  .orange {
-    color: $orange;
-  }
-  .yellow {
-    color: $yellow;
-  }
-  .green {
-    color: $green;
-  }
-  .blue {
-    color: $blue;
-  }
-  .purple {
-    color: $purple;
-  }
-  .pink {
-    color: $pink;
+.red {
+  color: $red;
+}
+.orange {
+  color: $orange;
+}
+.yellow {
+  color: $yellow;
+}
+.green {
+  color: $green;
+}
+.blue {
+  color: $blue;
+}
+.purple {
+  color: $purple;
+}
+.pink {
+  color: $pink;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+  max-width: 1200px;
+
+  div {
+    @include flexCenter();
+    justify-content: flex-start;
+    list-style: none;
+    color: white;
+    margin-top: 5px;
+    font-size: 30px;
+    min-width: 300px;
+    height: 70px;
+
+    span {
+      margin-left: 1rem;
+    }
+    img {
+      height: 30px;
+      width: 30px;
+      margin-left: 1em;
+    }
   }
 }
 
 footer {
-  padding: 0 5rem;
-  margin-top: 1rem;
-  width: 100%;
+  @include flexCenter();
+  width: 50%;
+  min-width: 300px;
 }
