@@ -4,31 +4,23 @@ const results = (() => {
 
   //get results
   const resultsList = JSON.parse(localStorage.getItem("resultsList"));
-  console.table(resultsList);
 
   let q = 1;
-  let colours = [
-    ".red",
-    ".orange",
-    ".yellow",
-    ".green",
-    ".blue",
-    ".purple",
-    ".pink",
-  ];
-
-  if (Object.keys(resultsList).length % 10 == 0) {
-    let numOfCol = Object.keys(resultsList).length / 10;
-  }
+  let pos = 0;
+  let colours = ["red", "orange", "yellow", "green", "blue", "purple", "pink"];
 
   for (let question in resultsList) {
     const div = document.createElement("div");
     container.appendChild(div);
 
     const qNum = document.createElement("span");
-    qNum.classList.add("red");
     qNum.innerText = `Q${q}.`;
+    if (pos == colours.length) {
+      pos = 0;
+    }
+    qNum.classList.add(colours[pos]);
     div.appendChild(qNum);
+    pos++;
     q++;
 
     const fullQuestion = document.createElement("span");
