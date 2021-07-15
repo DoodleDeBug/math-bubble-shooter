@@ -78,10 +78,6 @@ const game = (() => {
       render(answerChoices);
     }, 700);
     setTimeout(updateQNum, 700);
-
-    // console.log(questionList);
-    // console.log(actualAnswerList);
-    // console.log(userAnswerList);
   }
 
   function render(choices) {
@@ -203,6 +199,11 @@ const game = (() => {
 
     console.log(points);
     console.table(resultsList);
+    saveLocal();
+
+    function saveLocal() {
+      localStorage.setItem("resultsList", JSON.stringify(resultsList));
+    }
   }
 })();
 
