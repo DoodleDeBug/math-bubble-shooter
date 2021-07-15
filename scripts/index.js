@@ -187,21 +187,22 @@ const game = (() => {
   }
 
   function compileResults() {
+    const resultsList = {};
     let points = 0;
 
     for (let i = 0; i < qNum - 1; i++) {
-      // console.log(
-      //   `Q${i + 1}. ${questionList[i]} answer = ${
-      //     actualAnswerList[i]
-      //   } your answer = ${userAnswerList[i]}`
-      // );
-
       if (userAnswerList[i] == actualAnswerList[i]) {
         points++;
+        resultsList[`Q${i + 1}. ${questionList[i]} = ${userAnswerList[i]}`] =
+          "correct";
+      } else {
+        resultsList[`Q${i + 1}. ${questionList[i]} = ${userAnswerList[i]}`] =
+          "incorrect";
       }
     }
 
     console.log(points);
+    console.table(resultsList);
   }
 })();
 
