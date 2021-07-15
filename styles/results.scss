@@ -1,0 +1,50 @@
+@import "./mixins";
+@import "./variables";
+@import "./button";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.resultsPage {
+  background-color: $background;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+h1 {
+  @include flexCenter();
+  font-size: 80px;
+
+  .red {
+    color: $red;
+  }
+  .orange {
+    color: $orange;
+  }
+  .yellow {
+    color: $yellow;
+  }
+  .green {
+    color: $green;
+  }
+  .blue {
+    color: $blue;
+  }
+  .purple {
+    color: $purple;
+  }
+  .pink {
+    color: $pink;
+  }
+}
+
+footer {
+  padding: 0 5rem;
+  margin-top: 1rem;
+  width: 100%;
+}
