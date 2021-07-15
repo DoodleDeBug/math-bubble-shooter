@@ -86,11 +86,11 @@ const game = (() => {
     if (gameOption == "addition") {
       data = addition.createQ(num1, num2);
     } else if (gameOption == "subtraction") {
-      subtraction.nextQ();
+      data = subtraction.createQ(num1, num2);
     } else if (gameOption == "multiplication") {
-      multiplication.nextQ();
+      data = multiplication.createQ();
     } else if (gameOption == "division") {
-      division.nextQ();
+      data = division.createQ();
     }
 
     questionList.push(data[0]);
@@ -213,34 +213,54 @@ const addition = (() => {
 })();
 
 const subtraction = (() => {
-  //some code
-  function nextQ() {
-    console.log("S");
+  function createQ(num1, num2) {
+    let question;
+    let actualAnswer;
+
+    if (num1 > num2) {
+      question = `${num1} - ${num2}`;
+      actualAnswer = num1 - num2;
+    } else {
+      question = `${num2} - ${num1}`;
+      actualAnswer = num2 - num1;
+    }
+
+    return [question, actualAnswer];
   }
 
   return {
-    nextQ,
+    createQ,
   };
 })();
 
 const multiplication = (() => {
-  //some code
-  function nextQ() {
-    console.log("M");
+  function createQ() {
+    let num1 = Math.floor(Math.random() * 12) + 1;
+    let num2 = Math.floor(Math.random() * 12) + 1;
+
+    let question = `${num1} × ${num2}`;
+    let actualAnswer = num1 * num2;
+
+    return [question, actualAnswer];
   }
 
   return {
-    nextQ,
+    createQ,
   };
 })();
 
 const division = (() => {
-  //some code
-  function nextQ() {
-    console.log("D");
+  function createQ() {
+    let num1 = Math.floor(Math.random() * 12) + 1;
+    let num2 = Math.floor(Math.random() * 12) + 1;
+
+    let question = `${num1 * num2} ÷ ${num2}`;
+    let actualAnswer = (num1 * num2) / num2;
+
+    return [question, actualAnswer];
   }
 
   return {
-    nextQ,
+    createQ,
   };
 })();
