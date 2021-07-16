@@ -144,7 +144,7 @@ const game = (() => {
   function startTimer() {
     let interval = setInterval(countdown, 1000);
     let counter = 0;
-    let allocatedTime = 30;
+    let allocatedTime = 10;
 
     function convertSeconds(s) {
       let mins = Math.floor(s / 60);
@@ -244,20 +244,23 @@ const game = (() => {
     display.classList.add("displayMsg");
     intermediatePage.appendChild(display);
 
+    const center = document.createElement("div");
+    center.classList.add("center");
+    intermediatePage.appendChild(center);
+
     const label = document.createElement("h2");
     label.innerText = "Your Name";
-    label.classList.add("label");
-    intermediatePage.appendChild(label);
+    center.appendChild(label);
 
     const input = document.createElement("input"); // create input box
     input.setAttribute("type", "text");
     input.setAttribute("id", "name");
     input.classList.add("input");
-    intermediatePage.appendChild(input);
+    center.appendChild(input);
 
     const p = document.createElement("p");
     p.innerText = "Press Enter To Continue";
-    intermediatePage.appendChild(p);
+    center.appendChild(p);
   }
 
   function restoreLocal() {
