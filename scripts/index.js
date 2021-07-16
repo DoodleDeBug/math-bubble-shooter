@@ -116,7 +116,7 @@ const game = (() => {
 
   function pop(e) {
     /////////////////////////bubble container
-    let popSound = new Audio("./sounds/pop.mp3");
+    let popSound = new Audio("./../assets/sounds/pop.mp3");
     popSound.play();
     e.target.remove();
   }
@@ -176,7 +176,7 @@ const game = (() => {
   function navigateToResults() {
     // temporary - create button to go to results page
     const resultsBtn = document.createElement("a");
-    resultsBtn.setAttribute("href", "/pages/results.html");
+    resultsBtn.setAttribute("href", "./pages/results.html");
     resultsBtn.classList.add("btn");
     resultsBtn.innerText = "See Results";
     main.appendChild(resultsBtn);
