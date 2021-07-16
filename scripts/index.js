@@ -196,6 +196,7 @@ const game = (() => {
     }
 
     console.log(points);
+
     saveLocal();
 
     function saveLocal() {
