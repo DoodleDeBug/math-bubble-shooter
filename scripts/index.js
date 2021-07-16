@@ -21,6 +21,11 @@ const game = (() => {
   let actualAnswerList = [];
   let userAnswerList = [];
 
+  let additionLeaderboard;
+  let subtractionLeaderboard;
+  let multiplicationLeaderboard;
+  let divisionLeaderboard;
+
   function whichGame(e) {
     if (e.target.innerText == "Addition") {
       gameOption = "addition";
@@ -160,6 +165,7 @@ const game = (() => {
         removeBubbleListener();
         compileResults();
         navigateToResults();
+        intermediatePage();
       }
     }
   }
@@ -183,6 +189,8 @@ const game = (() => {
   }
 
   function compileResults() {
+    restoreLocal();
+
     const resultsList = {};
     let points = 0;
 
@@ -201,7 +209,75 @@ const game = (() => {
 
     function saveLocal() {
       localStorage.setItem("resultsList", JSON.stringify(resultsList));
+      localStorage.setItem(
+        "additionLeaderboard",
+        JSON.stringify(additionLeaderboard)
+      );
+      localStorage.setItem(
+        "subtractionLeaderboard",
+        JSON.stringify(subtractionLeaderboard)
+      );
+      localStorage.setItem(
+        "multiplicationLeaderboard",
+        JSON.stringify(multiplicationLeaderboard)
+      );
+      localStorage.setItem(
+        "divisionLeaderboard",
+        JSON.stringify(divisionLeaderboard)
+      );
     }
+  }
+
+  function intermediatePage() {
+    const page = document.querySelector(".gamePage");
+    while (page.firstChild) {
+      // clears page
+      page.removeChild(page.lastChild);
+    }
+
+    const intermediatePage = document.createElement("div");
+    intermediatePage.classList.add("intermediatePage");
+    page.appendChild(intermediatePage);
+
+    const display = document.createElement("div");
+    display.innerText = "hello";
+    display.classList.add("displayMsg");
+    intermediatePage.appendChild(display);
+
+    const label = document.createElement("h2");
+    label.innerText = "Your Name";
+    label.classList.add("label");
+    intermediatePage.appendChild(label);
+
+    const input = document.createElement("input"); // create input box
+    input.setAttribute("type", "text");
+    input.setAttribute("id", "name");
+    input.classList.add("input");
+    intermediatePage.appendChild(input);
+
+    const p = document.createElement("p");
+    p.innerText = "Press Enter To Continue";
+    intermediatePage.appendChild(p);
+  }
+
+  function restoreLocal() {
+    additionLeaderboard = JSON.parse(
+      localStorage.getItem("additionLeaderboard")
+    );
+    subtractionLeaderboard = JSON.parse(
+      localStorage.getItem("subtractionLeaderboard")
+    );
+    multiplicationLeaderboard = JSON.parse(
+      localStorage.getItem("multiplicationLeaderboard")
+    );
+    divisionLeaderboard = JSON.parse(
+      localStorage.getItem("divisionLeaderboard")
+    );
+
+    if (additionLeaderboard === null) additionLeaderboard = [];
+    if (subtractionLeaderboard === null) subtractionLeaderboard = [];
+    if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
+    if (divisionLeaderboard === null) divisionLeaderboard = [];
   }
 })();
 
