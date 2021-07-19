@@ -39,7 +39,12 @@ const getName = (() => {
       let name = input.value;
       console.log(name);
       addToLeaderboard(name, points);
+      goToLeaderboard();
     }
+  }
+
+  function goToLeaderboard() {
+    window.location = "./../pages/leaderboard.html";
   }
 
   function addToLeaderboard(name, points) {
