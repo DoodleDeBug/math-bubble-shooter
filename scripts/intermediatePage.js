@@ -7,25 +7,6 @@ const getName = (() => {
   const gameOption = localStorage.getItem("gameOption");
   console.log(gameOption);
 
-  //restore local leaderboard data
-  let additionLeaderboard = JSON.parse(
-    localStorage.getItem("additionLeaderboard")
-  );
-  let subtractionLeaderboard = JSON.parse(
-    localStorage.getItem("subtractionLeaderboard")
-  );
-  let multiplicationLeaderboard = JSON.parse(
-    localStorage.getItem("multiplicationLeaderboard")
-  );
-  let divisionLeaderboard = JSON.parse(
-    localStorage.getItem("divisionLeaderboard")
-  );
-
-  if (additionLeaderboard === null) additionLeaderboard = [];
-  if (subtractionLeaderboard === null) subtractionLeaderboard = [];
-  if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
-  if (divisionLeaderboard === null) divisionLeaderboard = [];
-
   //cache DOM
   const input = document.querySelector("input");
 
@@ -49,27 +30,52 @@ const getName = (() => {
 
   function addToLeaderboard(name, points) {
     if (gameOption == "addition") {
+      let additionLeaderboard = JSON.parse(
+        localStorage.getItem("additionLeaderboard")
+      );
+      if (additionLeaderboard === null) additionLeaderboard = [];
       console.table(additionLeaderboard);
+
       additionLeaderboard.push([name, points]);
+
       console.table(additionLeaderboard);
       localStorage.setItem(
         "additionLeaderboard",
         JSON.stringify(additionLeaderboard)
       );
     } else if (gameOption == "subtraction") {
+      let subtractionLeaderboard = JSON.parse(
+        localStorage.getItem("subtractionLeaderboard")
+      );
+      if (subtractionLeaderboard === null) subtractionLeaderboard = [];
+
       subtractionLeaderboard.push([name, points]);
+
       localStorage.setItem(
         "subtractionLeaderboard",
         JSON.stringify(subtractionLeaderboard)
       );
     } else if (gameOption == "multiplication") {
+      let multiplicationLeaderboard = JSON.parse(
+        localStorage.getItem("multiplicationLeaderboard")
+      );
+      if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
+
       multiplicationLeaderboard.push([name, points]);
+
       localStorage.setItem(
         "multiplicationLeaderboard",
         JSON.stringify(multiplicationLeaderboard)
       );
     } else if (gameOption == "division") {
+      let divisionLeaderboard = JSON.parse(
+        localStorage.getItem("divisionLeaderboard")
+      );
+
+      if (divisionLeaderboard === null) divisionLeaderboard = [];
+
       divisionLeaderboard.push([name, points]);
+
       localStorage.setItem(
         "divisionLeaderboard",
         JSON.stringify(divisionLeaderboard)
