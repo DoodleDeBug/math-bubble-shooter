@@ -38,6 +38,7 @@ const game = (() => {
     }
 
     modal.classList.toggle("hidden");
+    localStorage.setItem("gameOption", gameOption);
     nextQ(gameOption);
     startTimer();
   }
@@ -165,7 +166,7 @@ const game = (() => {
         removeBubbleListener();
         compileResults();
         navigateToResults();
-        intermediatePage();
+        // intermediatePage();
       }
     }
   }
@@ -240,7 +241,7 @@ const game = (() => {
     page.appendChild(intermediatePage);
 
     const display = document.createElement("div");
-    display.innerText = "hello";
+    display.innerText = "You Made It Onto The Leaderboard !";
     display.classList.add("displayMsg");
     intermediatePage.appendChild(display);
 
