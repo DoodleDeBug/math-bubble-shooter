@@ -212,6 +212,7 @@ const game = (() => {
 
     function saveLocal() {
       localStorage.setItem("resultsList", JSON.stringify(resultsList));
+      localStorage.setItem("currentPoints", points);
       localStorage.setItem(
         "additionLeaderboard",
         JSON.stringify(additionLeaderboard)
