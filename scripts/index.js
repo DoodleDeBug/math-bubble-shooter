@@ -117,7 +117,7 @@ const game = (() => {
 
   function pop(e) {
     /////////////////////////bubble container
-    let popSound = new Audio("./../assets/sounds/pop.mp3");
+    let popSound = new Audio("./assets/sounds/pop.mp3");
     popSound.play();
     e.target.remove();
   }
@@ -196,7 +196,7 @@ const game = (() => {
   }
 
   function intermediatePage() {
-    window.location = "./../pages/intermediatePage.html";
+    window.location = "./pages/intermediatePage.html";
   }
 })();
 

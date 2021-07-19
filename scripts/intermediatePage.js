@@ -20,11 +20,11 @@ const getName = (() => {
   }
 
   function goToLeaderboard() {
-    window.location = "./../pages/leaderboard.html";
+    window.location = "./leaderboard.html";
   }
 
   function navigateToResults() {
-    window.location = "./../pages/results.html";
+    window.location = "./results.html";
   }
 
   function addToLeaderboard(name, points) {
