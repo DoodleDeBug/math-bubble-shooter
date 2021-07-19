@@ -341,11 +341,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 1rem;
   background-color: rgba(80, 53, 249, 0.95);
-  width: 100%;
   border-radius: 5px;
-  height: 100px;
   font-size: 50px;
+  min-width: 300px;
+}
+.intermediatePage .displayMsg span {
+  margin: 0 5px;
 }
 .intermediatePage .center {
   display: flex;
@@ -356,6 +361,7 @@
 }
 .intermediatePage .center h2 {
   color: white;
+  font-size: 40px;
 }
 .intermediatePage .center input {
   display: flex;
@@ -378,7 +384,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 30px;
+  font-family: sans-serif;
 }
 
 .modal, main {
