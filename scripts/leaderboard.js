@@ -1,4 +1,7 @@
 const getName = (() => {
+  //get gameOption
+  const gameOption = localStorage.getItem("gameOption");
+
   //restore local leaderboard data
   let additionLeaderboard = JSON.parse(
     localStorage.getItem("additionLeaderboard")
@@ -19,15 +22,62 @@ const getName = (() => {
   if (divisionLeaderboard === null) divisionLeaderboard = [];
 
   displayGameOption();
+  displayLeaderboard();
 
   function displayGameOption() {
-    //get gameOption
-    const gameOption = localStorage.getItem("gameOption");
-
     //cache DOM
-    gameDisplay = document.querySelector("p");
+    const gameDisplay = document.querySelector("p");
 
     gameDisplay.innerText =
       gameOption.charAt(0).toUpperCase() + gameOption.slice(1);
+  }
+
+  function displayLeaderboard() {
+    let data = getLocalData();
+
+    //cache DOM
+    const leaderboard = document.querySelector(".leaderboard");
+
+    data.forEach((user) => {
+      const li = document.createElement("li");
+      li.innerText = `${user[0].charAt(0).toUpperCase() + user[0].slice(1)}, ${
+        user[1]
+      } points`;
+      leaderboard.appendChild(li);
+    });
+  }
+
+  function getLocalData() {
+    if (gameOption == "addition") {
+      let additionLeaderboard = JSON.parse(
+        localStorage.getItem("additionLeaderboard")
+      );
+
+      if (additionLeaderboard === null) additionLeaderboard = [];
+
+      return additionLeaderboard;
+    } else if (gameOption == "subtraction") {
+      let subtractionLeaderboard = JSON.parse(
+        localStorage.getItem("subtractionLeaderboard")
+      );
+      if (subtractionLeaderboard === null) subtractionLeaderboard = [];
+
+      return subtractionLeaderboard;
+    } else if (gameOption == "multiplication") {
+      let multiplicationLeaderboard = JSON.parse(
+        localStorage.getItem("multiplicationLeaderboard")
+      );
+      if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
+
+      return multiplicationLeaderboard;
+    } else if (gameOption == "division") {
+      let divisionLeaderboard = JSON.parse(
+        localStorage.getItem("divisionLeaderboard")
+      );
+
+      if (divisionLeaderboard === null) divisionLeaderboard = [];
+
+      return divisionLeaderboard;
+    }
   }
 })();
