@@ -165,8 +165,8 @@ const game = (() => {
         clearInterval(interval);
         removeBubbleListener();
         compileResults();
-        navigateToResults();
-        // intermediatePage();
+        // navigateToResults();
+        intermediatePage();
       }
     }
   }
@@ -181,12 +181,14 @@ const game = (() => {
   }
 
   function navigateToResults() {
-    // temporary - create button to go to results page
-    const resultsBtn = document.createElement("a");
-    resultsBtn.setAttribute("href", "./pages/results.html");
-    resultsBtn.classList.add("btn");
-    resultsBtn.innerText = "See Results";
-    main.appendChild(resultsBtn);
+    // temporary - go to results page
+    window.location = "./../pages/results.html";
+
+    // const resultsBtn = document.createElement("a");
+    // resultsBtn.setAttribute("href", "./pages/results.html");
+    // resultsBtn.classList.add("btn");
+    // resultsBtn.innerText = "See Results";
+    // main.appendChild(resultsBtn);
   }
 
   function compileResults() {
@@ -226,42 +228,13 @@ const game = (() => {
         "divisionLeaderboard",
         JSON.stringify(divisionLeaderboard)
       );
+
+      return { points };
     }
   }
 
   function intermediatePage() {
-    const page = document.querySelector(".gamePage");
-    while (page.firstChild) {
-      // clears page
-      page.removeChild(page.lastChild);
-    }
-
-    const intermediatePage = document.createElement("div");
-    intermediatePage.classList.add("intermediatePage");
-    page.appendChild(intermediatePage);
-
-    const display = document.createElement("div");
-    display.innerText = "You Made It Onto The Leaderboard !";
-    display.classList.add("displayMsg");
-    intermediatePage.appendChild(display);
-
-    const center = document.createElement("div");
-    center.classList.add("center");
-    intermediatePage.appendChild(center);
-
-    const label = document.createElement("h2");
-    label.innerText = "Your Name";
-    center.appendChild(label);
-
-    const input = document.createElement("input"); // create input box
-    input.setAttribute("type", "text");
-    input.setAttribute("id", "name");
-    input.classList.add("input");
-    center.appendChild(input);
-
-    const p = document.createElement("p");
-    p.innerText = "Press Enter To Continue";
-    center.appendChild(p);
+    window.location = "./../pages/intermediatePage.html";
   }
 
   function restoreLocal() {
