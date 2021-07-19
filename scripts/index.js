@@ -125,7 +125,7 @@ const game = (() => {
   function clearBubbles() {
     /////////////////////////bubble container
     const answerBubbles = document.querySelectorAll(".bubble");
-    answerBubbles.forEach((bubble) => bubble.remove());
+    answerBubbles.forEach((bubble) => setTimeout(bubble.remove(), 1000));
   }
 
   function updateQNum() {
@@ -138,7 +138,7 @@ const game = (() => {
   }
 
   function startTimer() {
-    let interval = setInterval(countdown, 1000);
+    let interval = setInterval(countdown, 3000);
     let counter = 0;
     let allocatedTime = 10;
 
