@@ -1,11 +1,9 @@
 const getName = (() => {
   //get points
   const points = localStorage.getItem("currentPoints");
-  console.log(points);
 
   //get gameOption
   const gameOption = localStorage.getItem("gameOption");
-  console.log(gameOption);
 
   //cache DOM
   const input = document.querySelector("input");
@@ -13,12 +11,9 @@ const getName = (() => {
   //add event listener
   document.addEventListener("keypress", submitName);
 
-  //variables
-
   function submitName(e) {
     if (e.key === "Enter") {
       let name = input.value;
-      console.log(name);
       addToLeaderboard(name, points);
       goToLeaderboard();
     }
@@ -26,6 +21,10 @@ const getName = (() => {
 
   function goToLeaderboard() {
     window.location = "./../pages/leaderboard.html";
+  }
+
+  function navigateToResults() {
+    window.location = "./../pages/results.html";
   }
 
   function addToLeaderboard(name, points) {
