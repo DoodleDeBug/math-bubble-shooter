@@ -165,7 +165,6 @@ const game = (() => {
         clearInterval(interval);
         removeBubbleListener();
         compileResults();
-        // navigateToResults();
         intermediatePage();
       }
     }
@@ -181,14 +180,7 @@ const game = (() => {
   }
 
   function navigateToResults() {
-    // temporary - go to results page
     window.location = "./../pages/results.html";
-
-    // const resultsBtn = document.createElement("a");
-    // resultsBtn.setAttribute("href", "./pages/results.html");
-    // resultsBtn.classList.add("btn");
-    // resultsBtn.innerText = "See Results";
-    // main.appendChild(resultsBtn);
   }
 
   function compileResults() {
@@ -229,8 +221,6 @@ const game = (() => {
         "divisionLeaderboard",
         JSON.stringify(divisionLeaderboard)
       );
-
-      return { points };
     }
   }
 
