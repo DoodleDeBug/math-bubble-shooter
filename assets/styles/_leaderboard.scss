@@ -34,3 +34,8 @@ ul {
     font-size: 25px;
   }
 }
+
+footer {
+  @include flexCenter();
+  flex-direction: column;
+}
