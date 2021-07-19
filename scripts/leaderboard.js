@@ -38,12 +38,31 @@ const getName = (() => {
     //cache DOM
     const leaderboard = document.querySelector(".leaderboard");
 
+    let pos = 0;
+    let colours = [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+    ];
+
     data.forEach((user) => {
       const li = document.createElement("li");
-      li.innerText = `${user[0].charAt(0).toUpperCase() + user[0].slice(1)}, ${
-        user[1]
-      } points`;
+
+      if (pos == colours.length) {
+        pos = 0;
+      }
+
+      li.innerHTML = `${
+        user[0].charAt(0).toUpperCase() + user[0].slice(1)
+      }, <span class="${colours[pos]}"s>${user[1]}</span> points`;
+
       leaderboard.appendChild(li);
+
+      pos++;
     });
   }
 
