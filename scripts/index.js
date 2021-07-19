@@ -21,11 +21,6 @@ const game = (() => {
   let actualAnswerList = [];
   let userAnswerList = [];
 
-  let additionLeaderboard;
-  let subtractionLeaderboard;
-  let multiplicationLeaderboard;
-  let divisionLeaderboard;
-
   function whichGame(e) {
     if (e.target.innerText == "Addition") {
       gameOption = "addition";
@@ -179,13 +174,7 @@ const game = (() => {
     );
   }
 
-  function navigateToResults() {
-    window.location = "./../pages/results.html";
-  }
-
   function compileResults() {
-    restoreLocal();
-
     const resultsList = {};
     let points = 0;
 
@@ -198,54 +187,16 @@ const game = (() => {
       }
     }
 
-    console.log(points);
-
     saveLocal();
 
     function saveLocal() {
       localStorage.setItem("resultsList", JSON.stringify(resultsList));
       localStorage.setItem("currentPoints", points);
-      localStorage.setItem(
-        "additionLeaderboard",
-        JSON.stringify(additionLeaderboard)
-      );
-      localStorage.setItem(
-        "subtractionLeaderboard",
-        JSON.stringify(subtractionLeaderboard)
-      );
-      localStorage.setItem(
-        "multiplicationLeaderboard",
-        JSON.stringify(multiplicationLeaderboard)
-      );
-      localStorage.setItem(
-        "divisionLeaderboard",
-        JSON.stringify(divisionLeaderboard)
-      );
     }
   }
 
   function intermediatePage() {
     window.location = "./../pages/intermediatePage.html";
-  }
-
-  function restoreLocal() {
-    additionLeaderboard = JSON.parse(
-      localStorage.getItem("additionLeaderboard")
-    );
-    subtractionLeaderboard = JSON.parse(
-      localStorage.getItem("subtractionLeaderboard")
-    );
-    multiplicationLeaderboard = JSON.parse(
-      localStorage.getItem("multiplicationLeaderboard")
-    );
-    divisionLeaderboard = JSON.parse(
-      localStorage.getItem("divisionLeaderboard")
-    );
-
-    if (additionLeaderboard === null) additionLeaderboard = [];
-    if (subtractionLeaderboard === null) subtractionLeaderboard = [];
-    if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
-    if (divisionLeaderboard === null) divisionLeaderboard = [];
   }
 })();
 
