@@ -374,6 +374,7 @@
   border-radius: 5px;
   border: none;
   margin: 1rem 0 0.5rem;
+  color: #a78cf3;
 }
 .intermediatePage .center p {
   color: white;
@@ -450,6 +451,7 @@ footer {
   bottom: 0;
   position: fixed;
   width: 100%;
+  font-size: 30px;
 }
 footer .qNum, footer .timer {
   display: flex;
