@@ -1,0 +1,10 @@
+@import "./mixins";
+
+.leaderboardPage {
+  @include flexCenter();
+  flex-direction: column;
+}
+
+p {
+  color: white;
+}
