@@ -47,7 +47,7 @@ const getName = (() => {
       //add event listener
       document.addEventListener("keypress", submitName);
 
-      if (points > 10) {
+      if (points > 5) {
         msg.innerHTML = `<span class="red">You</span>
         <span class="orange">Got</span>
         <span class="yellow">A</span>
