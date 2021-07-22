@@ -30,10 +30,12 @@ const getName = (() => {
         <span class="green">Leaderboard</span>
         <span class="blue">!</span>`;
 
+      Array.from(container.childNodes).forEach((child) => child.remove());
+
       const btn = document.createElement("button");
       btn.classList.add("btn");
       btn.innerText = "See Results";
-
+      container.appendChild(btn);
       btn.addEventListener("click", navigateToResults);
     } else {
       //add event listener
