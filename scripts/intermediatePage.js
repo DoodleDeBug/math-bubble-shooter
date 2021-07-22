@@ -1,4 +1,7 @@
 const getName = (() => {
+  // // variables
+  // let leaderboard;
+
   //get points
   const points = localStorage.getItem("currentPoints");
 
@@ -7,9 +10,46 @@ const getName = (() => {
 
   //cache DOM
   const input = document.querySelector("input");
+  const msg = document.querySelector(".displayMsg");
+  const container = document.querySelector(".center");
 
-  //add event listener
-  document.addEventListener("keypress", submitName);
+  compareToLeaderboard(points);
+
+  function compareToLeaderboard(points) {
+    if (points == 0) {
+      msg.innerHTML = `<span class="red">Too</span>
+        <span class="orange">Bad</span>
+        <span class="yellow">!</span>
+        <span class="green">You</span>
+        <span class="blue">Didn't</span>
+        <span class="purple">Make</span>
+        <span class="pink">It</span>
+        <span class="red">On</span>
+        <span class="orange">To</span>
+        <span class="yellow">The</span>
+        <span class="green">Leaderboard</span>
+        <span class="blue">!</span>`;
+
+      const btn = document.createElement("button");
+      btn.classList.add("btn");
+      btn.innerText = "See Results";
+
+      btn.addEventListener("click", navigateToResults);
+    } else {
+      //add event listener
+      document.addEventListener("keypress", submitName);
+
+      if (points > 10) {
+        msg.innerHTML = `<span class="red">You</span>
+        <span class="orange">Got</span>
+        <span class="yellow">A</span>
+        <span class="green">New</span>
+        <span class="blue">High</span>
+        <span class="purple">Score</span>
+        <span class="pink">!</span>`;
+      }
+    }
+  }
 
   function submitName(e) {
     if (e.key === "Enter") {
