@@ -32,11 +32,17 @@ const getName = (() => {
 
       Array.from(container.childNodes).forEach((child) => child.remove());
 
-      const btn = document.createElement("button");
-      btn.classList.add("btn");
-      btn.innerText = "See Results";
-      container.appendChild(btn);
-      btn.addEventListener("click", navigateToResults);
+      const leaderboardBtn = document.createElement("button");
+      leaderboardBtn.classList.add("btn");
+      leaderboardBtn.innerText = "See Leaderboard";
+      container.appendChild(leaderboardBtn);
+      leaderboardBtn.addEventListener("click", goToLeaderboard);
+
+      const resultsBtn = document.createElement("button");
+      resultsBtn.classList.add("btn");
+      resultsBtn.innerText = "See Results";
+      container.appendChild(resultsBtn);
+      resultsBtn.addEventListener("click", navigateToResults);
     } else {
       //add event listener
       document.addEventListener("keypress", submitName);
