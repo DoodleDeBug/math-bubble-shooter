@@ -23,11 +23,16 @@
 }
 
 ul {
+  @include flexCenter();
+  flex-direction: column;
+  justify-content: flex-start;
   background-color: rgba(80, 53, 249, 0.95);
   color: white;
   list-style: none;
   padding: 1rem;
   border-radius: $standardBorderRadius;
+
+  width: 300px;
 
   li {
     margin-top: 0.5rem;

@@ -126,11 +126,17 @@
 }
 
 ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
   background-color: rgba(80, 53, 249, 0.95);
   color: white;
   list-style: none;
   padding: 1rem;
   border-radius: 5px;
+  width: 300px;
 }
 ul li {
   margin-top: 0.5rem;
