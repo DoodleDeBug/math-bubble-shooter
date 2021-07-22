@@ -2,25 +2,6 @@ const getName = (() => {
   //get gameOption
   const gameOption = localStorage.getItem("gameOption");
 
-  //restore local leaderboard data
-  let additionLeaderboard = JSON.parse(
-    localStorage.getItem("additionLeaderboard")
-  );
-  let subtractionLeaderboard = JSON.parse(
-    localStorage.getItem("subtractionLeaderboard")
-  );
-  let multiplicationLeaderboard = JSON.parse(
-    localStorage.getItem("multiplicationLeaderboard")
-  );
-  let divisionLeaderboard = JSON.parse(
-    localStorage.getItem("divisionLeaderboard")
-  );
-
-  if (additionLeaderboard === null) additionLeaderboard = [];
-  if (subtractionLeaderboard === null) subtractionLeaderboard = [];
-  if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
-  if (divisionLeaderboard === null) divisionLeaderboard = [];
-
   displayGameOption();
   displayLeaderboard();
 
@@ -34,6 +15,7 @@ const getName = (() => {
 
   function displayLeaderboard() {
     let data = getLocalData();
+    if (data === null) data = [];
 
     //cache DOM
     const leaderboard = document.querySelector(".leaderboard");
@@ -72,29 +54,23 @@ const getName = (() => {
         localStorage.getItem("additionLeaderboard")
       );
 
-      if (additionLeaderboard === null) additionLeaderboard = [];
-
       return additionLeaderboard;
     } else if (gameOption == "subtraction") {
       let subtractionLeaderboard = JSON.parse(
         localStorage.getItem("subtractionLeaderboard")
       );
-      if (subtractionLeaderboard === null) subtractionLeaderboard = [];
 
       return subtractionLeaderboard;
     } else if (gameOption == "multiplication") {
       let multiplicationLeaderboard = JSON.parse(
         localStorage.getItem("multiplicationLeaderboard")
       );
-      if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
 
       return multiplicationLeaderboard;
     } else if (gameOption == "division") {
       let divisionLeaderboard = JSON.parse(
         localStorage.getItem("divisionLeaderboard")
       );
-
-      if (divisionLeaderboard === null) divisionLeaderboard = [];
 
       return divisionLeaderboard;
     }
