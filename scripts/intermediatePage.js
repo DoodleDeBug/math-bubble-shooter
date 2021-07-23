@@ -32,6 +32,7 @@ const getName = (() => {
     if (pointsList.length == 0) {
       console.log("no data yet");
       status = "push";
+      displayMessage("highscore");
       document.addEventListener("keypress", (e) => {
         submitName(e, status);
       });
