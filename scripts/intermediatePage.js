@@ -3,9 +3,7 @@ const getName = (() => {
   let leaderboardType;
 
   //cache DOM
-  const input = document.querySelector("input");
-  const msg = document.querySelector(".displayMsg");
-  const container = document.querySelector(".center");
+  let input;
   const pointsDisplay = document.querySelector(".pointsDisplay");
 
   //get points
@@ -32,34 +30,26 @@ const getName = (() => {
     console.log(pointsList);
 
     if (pointsList.length == 0) {
-      console.log("his");
+      console.log("no data yet");
       status = "push";
       document.addEventListener("keypress", (e) => {
         submitName(e, status);
       });
     } else {
-      console.log("howdy");
       for (let i = 0; i < 10; i++) {
         if (points >= pointsList[i]) {
           let index = i;
           console.log(index);
           status = "splice";
+          index == 0
+            ? displayMessage("highscore")
+            : displayMessage("leaderboard");
           document.addEventListener("keypress", (e) => {
             submitName(e, status, index);
           });
           return;
         }
       }
-      // pointsList.forEach((item) => {
-      //   if (points >= item) {
-      //     let index = pointsList.indexOf(item);
-      //     console.log(index);
-      //     status = "splice";
-      //     document.addEventListener("keypress", (e) => {
-      //       submitName(e, status, index);
-      //     });
-      //   }
-      // });
     }
 
     if (pointsList.length < 10) {
@@ -68,48 +58,39 @@ const getName = (() => {
         submitName(e, status);
       });
     }
+  }
 
-    // if (points == 0) {
-    //   msg.innerHTML = `<span class="red">Too</span>
-    //     <span class="orange">Bad</span>
-    //     <span class="yellow">!</span>
-    //     <span class="green">You</span>
-    //     <span class="blue">Didn't</span>
-    //     <span class="purple">Make</span>
-    //     <span class="pink">It</span>
-    //     <span class="red">On</span>
-    //     <span class="orange">To</span>
-    //     <span class="yellow">The</span>
-    //     <span class="green">Leaderboard</span>
-    //     <span class="blue">!</span>`;
+  function displayMessage(message) {
+    //cache DOM
+    const msg = document.querySelector(".displayMsg");
+    const container = document.querySelector(".center");
 
-    //   Array.from(container.childNodes).forEach((child) => child.remove());
+    if (message == "highscore") {
+      msg.innerHTML = `<span class="red">You</span>
+      <span class="orange">Got</span>
+      <span class="yellow">A</span>
+      <span class="green">New</span>
+      <span class="blue">High</span>
+      <span class="purple">Score</span>
+      <span class="pink">!</span>`;
+    } else if (message == "leaderboard") {
+      msg.innerHTML = `<span class="red">You </span>
+      <span class="orange">Made</span>
+              <span class="yellow">It</span>
+              <span class="green">On</span>
+              <span class="blue">To</span>
+              <span class="purple">The</span>
+              <span class="pink">Leaderboard</span>
+              <span class="red">!</span>`;
+    }
 
-    //   const leaderboardBtn = document.createElement("button");
-    //   leaderboardBtn.classList.add("btn");
-    //   leaderboardBtn.innerText = "See Leaderboard";
-    //   container.appendChild(leaderboardBtn);
-    //   leaderboardBtn.addEventListener("click", goToLeaderboard);
+    Array.from(container.childNodes).forEach((child) => child.remove());
 
-    //   const resultsBtn = document.createElement("button");
-    //   resultsBtn.classList.add("btn");
-    //   resultsBtn.innerText = "See Results";
-    //   container.appendChild(resultsBtn);
-    //   resultsBtn.addEventListener("click", navigateToResults);
-    // } else {
-    //   //add event listener
-    //   document.addEventListener("keypress", submitName);
+    container.innerHTML = `<h2>Your Name</h2>
+    <input type="text" name="name" id="name">
+    <p>Press Enter To Continue</p>`;
 
-    //   if (points > 5) {
-    //     msg.innerHTML = `<span class="red">You</span>
-    //     <span class="orange">Got</span>
-    //     <span class="yellow">A</span>
-    //     <span class="green">New</span>
-    //     <span class="blue">High</span>
-    //     <span class="purple">Score</span>
-    //     <span class="pink">!</span>`;
-    //   }
-    // }
+    input = document.querySelector("input");
   }
 
   function submitName(e, status, index) {
@@ -129,10 +110,6 @@ const getName = (() => {
 
   function goToLeaderboard() {
     window.location = "./leaderboard.html";
-  }
-
-  function navigateToResults() {
-    window.location = "./results.html";
   }
 
   function updateLeaderboard(data) {
