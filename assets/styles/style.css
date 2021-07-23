@@ -352,6 +352,12 @@
 .intermediatePage .displayMsg span {
   margin: 0 5px;
 }
+.intermediatePage .pointsDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
 .intermediatePage .center {
   display: flex;
   justify-content: center;

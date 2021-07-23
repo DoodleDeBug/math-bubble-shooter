@@ -1,21 +1,33 @@
 const getName = (() => {
-  // // variables
-  // let leaderboard;
-
-  //get points
-  const points = localStorage.getItem("currentPoints");
-
-  //get gameOption
-  const gameOption = localStorage.getItem("gameOption");
+  // variables
+  let leaderboardType;
 
   //cache DOM
   const input = document.querySelector("input");
   const msg = document.querySelector(".displayMsg");
   const container = document.querySelector(".center");
+  const pointsDisplay = document.querySelector(".pointsDisplay");
+
+  //get points
+  const points = localStorage.getItem("currentPoints");
+  pointsDisplay.innerText = `${points} points`;
+
+  //get gameOption
+  const gameOption = localStorage.getItem("gameOption");
 
   compareToLeaderboard(points);
 
   function compareToLeaderboard(points) {
+    let data = getLocalData();
+    if (data === null) data = [];
+
+    let pointsList = [];
+    data.forEach((user) => {
+      pointsList.push(user[1]);
+    });
+
+    console.log(pointsList);
+
     if (points == 0) {
       msg.innerHTML = `<span class="red">Too</span>
         <span class="orange">Bad</span>
@@ -81,11 +93,11 @@ const getName = (() => {
         localStorage.getItem("additionLeaderboard")
       );
       if (additionLeaderboard === null) additionLeaderboard = [];
-      console.table(additionLeaderboard);
 
       additionLeaderboard.push([name, points]);
 
       console.table(additionLeaderboard);
+
       localStorage.setItem(
         "additionLeaderboard",
         JSON.stringify(additionLeaderboard)
@@ -128,5 +140,23 @@ const getName = (() => {
         JSON.stringify(divisionLeaderboard)
       );
     }
+  }
+
+  function getLocalData() {
+    if (gameOption == "addition") {
+      leaderboardType = JSON.parse(localStorage.getItem("additionLeaderboard"));
+    } else if (gameOption == "subtraction") {
+      leaderboardType = JSON.parse(
+        localStorage.getItem("subtractionLeaderboard")
+      );
+    } else if (gameOption == "multiplication") {
+      leaderboardType = JSON.parse(
+        localStorage.getItem("multiplicationLeaderboard")
+      );
+    } else if (gameOption == "division") {
+      leaderboardType = JSON.parse(localStorage.getItem("divisionLeaderboard"));
+    }
+    console.table(leaderboardType);
+    return leaderboardType;
   }
 })();

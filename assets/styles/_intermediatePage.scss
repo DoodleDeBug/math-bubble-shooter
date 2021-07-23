@@ -27,6 +27,10 @@
     }
   }
 
+  .pointsDisplay {
+    @include flexCenter();
+    color: white;
+  }
   .center {
     @include flexCenter();
     height: 80%;
