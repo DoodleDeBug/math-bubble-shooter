@@ -52,12 +52,12 @@ const getName = (() => {
       }
     }
 
-    if (pointsList.length < 10) {
-      status = "push";
-      document.addEventListener("keypress", (e) => {
-        submitName(e, status);
-      });
-    }
+    // if (pointsList.length < 10) {
+    //   status = "push";
+    //   document.addEventListener("keypress", (e) => {
+    //     submitName(e, status);
+    //   });
+    // }
   }
 
   function displayMessage(message) {
