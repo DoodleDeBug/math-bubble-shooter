@@ -1,6 +1,9 @@
-const getName = (() => {
+const leaderboardControl = (() => {
   //get gameOption
   const gameOption = localStorage.getItem("gameOption");
+
+  //varaibles
+  let leaderboardType;
 
   displayGameOption();
   displayLeaderboard();
@@ -50,29 +53,19 @@ const getName = (() => {
 
   function getLocalData() {
     if (gameOption == "addition") {
-      let additionLeaderboard = JSON.parse(
-        localStorage.getItem("additionLeaderboard")
-      );
-
-      return additionLeaderboard;
+      leaderboardType = JSON.parse(localStorage.getItem("additionLeaderboard"));
     } else if (gameOption == "subtraction") {
-      let subtractionLeaderboard = JSON.parse(
+      leaderboardType = JSON.parse(
         localStorage.getItem("subtractionLeaderboard")
       );
-
-      return subtractionLeaderboard;
     } else if (gameOption == "multiplication") {
-      let multiplicationLeaderboard = JSON.parse(
+      leaderboardType = JSON.parse(
         localStorage.getItem("multiplicationLeaderboard")
       );
-
-      return multiplicationLeaderboard;
     } else if (gameOption == "division") {
-      let divisionLeaderboard = JSON.parse(
-        localStorage.getItem("divisionLeaderboard")
-      );
-
-      return divisionLeaderboard;
+      leaderboardType = JSON.parse(localStorage.getItem("divisionLeaderboard"));
     }
+
+    return leaderboardType;
   }
 })();
