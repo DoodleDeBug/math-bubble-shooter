@@ -3,8 +3,8 @@ const getName = (() => {
   let leaderboardType;
 
   //cache DOM
-  let input;
   const pointsDisplay = document.querySelector(".pointsDisplay");
+  let input;
 
   //get points
   const points = localStorage.getItem("currentPoints");
@@ -16,6 +16,8 @@ const getName = (() => {
   //get local data
   let data = getLocalData();
   if (data === null) data = [];
+
+  console.table(data);
 
   compareToLeaderboard(points);
 
@@ -139,8 +141,6 @@ const getName = (() => {
     } else if (gameOption == "division") {
       leaderboardType = JSON.parse(localStorage.getItem("divisionLeaderboard"));
     }
-
-    console.table(leaderboardType);
 
     return leaderboardType;
   }
