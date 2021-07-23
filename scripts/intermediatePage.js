@@ -15,11 +15,14 @@ const getName = (() => {
   //get gameOption
   const gameOption = localStorage.getItem("gameOption");
 
+  //get local data
+  let data = getLocalData();
+  if (data === null) data = [];
+
   compareToLeaderboard(points);
 
   function compareToLeaderboard(points) {
-    let data = getLocalData();
-    if (data === null) data = [];
+    let status;
 
     let pointsList = [];
     data.forEach((user) => {
@@ -28,53 +31,98 @@ const getName = (() => {
 
     console.log(pointsList);
 
-    if (points == 0) {
-      msg.innerHTML = `<span class="red">Too</span>
-        <span class="orange">Bad</span>
-        <span class="yellow">!</span>
-        <span class="green">You</span>
-        <span class="blue">Didn't</span>
-        <span class="purple">Make</span>
-        <span class="pink">It</span>
-        <span class="red">On</span>
-        <span class="orange">To</span>
-        <span class="yellow">The</span>
-        <span class="green">Leaderboard</span>
-        <span class="blue">!</span>`;
-
-      Array.from(container.childNodes).forEach((child) => child.remove());
-
-      const leaderboardBtn = document.createElement("button");
-      leaderboardBtn.classList.add("btn");
-      leaderboardBtn.innerText = "See Leaderboard";
-      container.appendChild(leaderboardBtn);
-      leaderboardBtn.addEventListener("click", goToLeaderboard);
-
-      const resultsBtn = document.createElement("button");
-      resultsBtn.classList.add("btn");
-      resultsBtn.innerText = "See Results";
-      container.appendChild(resultsBtn);
-      resultsBtn.addEventListener("click", navigateToResults);
+    if (pointsList.length == 0) {
+      console.log("his");
+      status = "push";
+      document.addEventListener("keypress", (e) => {
+        submitName(e, status);
+      });
     } else {
-      //add event listener
-      document.addEventListener("keypress", submitName);
-
-      if (points > 5) {
-        msg.innerHTML = `<span class="red">You</span>
-        <span class="orange">Got</span>
-        <span class="yellow">A</span>
-        <span class="green">New</span>
-        <span class="blue">High</span>
-        <span class="purple">Score</span>
-        <span class="pink">!</span>`;
+      console.log("howdy");
+      for (let i = 0; i < 10; i++) {
+        if (points >= pointsList[i]) {
+          let index = i;
+          console.log(index);
+          status = "splice";
+          document.addEventListener("keypress", (e) => {
+            submitName(e, status, index);
+          });
+          return;
+        }
       }
+      // pointsList.forEach((item) => {
+      //   if (points >= item) {
+      //     let index = pointsList.indexOf(item);
+      //     console.log(index);
+      //     status = "splice";
+      //     document.addEventListener("keypress", (e) => {
+      //       submitName(e, status, index);
+      //     });
+      //   }
+      // });
     }
+
+    if (pointsList.length < 10) {
+      status = "push";
+      document.addEventListener("keypress", (e) => {
+        submitName(e, status);
+      });
+    }
+
+    // if (points == 0) {
+    //   msg.innerHTML = `<span class="red">Too</span>
+    //     <span class="orange">Bad</span>
+    //     <span class="yellow">!</span>
+    //     <span class="green">You</span>
+    //     <span class="blue">Didn't</span>
+    //     <span class="purple">Make</span>
+    //     <span class="pink">It</span>
+    //     <span class="red">On</span>
+    //     <span class="orange">To</span>
+    //     <span class="yellow">The</span>
+    //     <span class="green">Leaderboard</span>
+    //     <span class="blue">!</span>`;
+
+    //   Array.from(container.childNodes).forEach((child) => child.remove());
+
+    //   const leaderboardBtn = document.createElement("button");
+    //   leaderboardBtn.classList.add("btn");
+    //   leaderboardBtn.innerText = "See Leaderboard";
+    //   container.appendChild(leaderboardBtn);
+    //   leaderboardBtn.addEventListener("click", goToLeaderboard);
+
+    //   const resultsBtn = document.createElement("button");
+    //   resultsBtn.classList.add("btn");
+    //   resultsBtn.innerText = "See Results";
+    //   container.appendChild(resultsBtn);
+    //   resultsBtn.addEventListener("click", navigateToResults);
+    // } else {
+    //   //add event listener
+    //   document.addEventListener("keypress", submitName);
+
+    //   if (points > 5) {
+    //     msg.innerHTML = `<span class="red">You</span>
+    //     <span class="orange">Got</span>
+    //     <span class="yellow">A</span>
+    //     <span class="green">New</span>
+    //     <span class="blue">High</span>
+    //     <span class="purple">Score</span>
+    //     <span class="pink">!</span>`;
+    //   }
+    // }
   }
 
-  function submitName(e) {
+  function submitName(e, status, index) {
     if (e.key === "Enter") {
       let name = input.value;
-      addToLeaderboard(name, points);
+
+      if (status == "push") {
+        data.push([name, points]);
+      } else if (status == "splice") {
+        data.splice(index, 0, [name, points]);
+      }
+
+      updateLeaderboard(data);
       goToLeaderboard();
     }
   }
@@ -87,58 +135,15 @@ const getName = (() => {
     window.location = "./results.html";
   }
 
-  function addToLeaderboard(name, points) {
+  function updateLeaderboard(data) {
     if (gameOption == "addition") {
-      let additionLeaderboard = JSON.parse(
-        localStorage.getItem("additionLeaderboard")
-      );
-      if (additionLeaderboard === null) additionLeaderboard = [];
-
-      additionLeaderboard.push([name, points]);
-
-      console.table(additionLeaderboard);
-
-      localStorage.setItem(
-        "additionLeaderboard",
-        JSON.stringify(additionLeaderboard)
-      );
+      localStorage.setItem("additionLeaderboard", JSON.stringify(data));
     } else if (gameOption == "subtraction") {
-      let subtractionLeaderboard = JSON.parse(
-        localStorage.getItem("subtractionLeaderboard")
-      );
-      if (subtractionLeaderboard === null) subtractionLeaderboard = [];
-
-      subtractionLeaderboard.push([name, points]);
-
-      localStorage.setItem(
-        "subtractionLeaderboard",
-        JSON.stringify(subtractionLeaderboard)
-      );
+      localStorage.setItem("subtractionLeaderboard", JSON.stringify(data));
     } else if (gameOption == "multiplication") {
-      let multiplicationLeaderboard = JSON.parse(
-        localStorage.getItem("multiplicationLeaderboard")
-      );
-      if (multiplicationLeaderboard === null) multiplicationLeaderboard = [];
-
-      multiplicationLeaderboard.push([name, points]);
-
-      localStorage.setItem(
-        "multiplicationLeaderboard",
-        JSON.stringify(multiplicationLeaderboard)
-      );
+      localStorage.setItem("multiplicationLeaderboard", JSON.stringify(data));
     } else if (gameOption == "division") {
-      let divisionLeaderboard = JSON.parse(
-        localStorage.getItem("divisionLeaderboard")
-      );
-
-      if (divisionLeaderboard === null) divisionLeaderboard = [];
-
-      divisionLeaderboard.push([name, points]);
-
-      localStorage.setItem(
-        "divisionLeaderboard",
-        JSON.stringify(divisionLeaderboard)
-      );
+      localStorage.setItem("divisionLeaderboard", JSON.stringify(data));
     }
   }
 
@@ -156,7 +161,9 @@ const getName = (() => {
     } else if (gameOption == "division") {
       leaderboardType = JSON.parse(localStorage.getItem("divisionLeaderboard"));
     }
+
     console.table(leaderboardType);
+
     return leaderboardType;
   }
 })();
