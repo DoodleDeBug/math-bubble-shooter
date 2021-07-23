@@ -19,6 +19,7 @@ const leaderboardControl = (() => {
   function displayLeaderboard() {
     let data = getLocalData();
     if (data === null) data = [];
+    if (data.length > 10) data.pop();
 
     //cache DOM
     const leaderboard = document.querySelector(".leaderboard");
@@ -43,7 +44,7 @@ const leaderboardControl = (() => {
 
       li.innerHTML = `${
         user[0].charAt(0).toUpperCase() + user[0].slice(1)
-      }, <span class="${colours[pos]}"s>${user[1]}</span> points`;
+      }, <span class="${colours[pos]}">${user[1]}</span> points`;
 
       leaderboard.appendChild(li);
 
@@ -65,7 +66,7 @@ const leaderboardControl = (() => {
     } else if (gameOption == "division") {
       leaderboardType = JSON.parse(localStorage.getItem("divisionLeaderboard"));
     }
-
+    console.table(leaderboardType);
     return leaderboardType;
   }
 })();
