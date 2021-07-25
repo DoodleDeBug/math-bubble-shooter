@@ -140,7 +140,7 @@ const game = (() => {
   function startTimer() {
     let interval = setInterval(countdown, 1000);
     let counter = 0;
-    let allocatedTime = 10;
+    let allocatedTime = 60;
 
     function convertSeconds(s) {
       let mins = Math.floor(s / 60);
