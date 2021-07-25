@@ -32,7 +32,6 @@ const getName = (() => {
     console.log(pointsList);
 
     if (pointsList.length == 0) {
-      console.log("no data yet");
       status = "push";
       displayMessage("highscore");
       document.addEventListener("keypress", (e) => {
@@ -42,7 +41,6 @@ const getName = (() => {
       for (let i = 0; i < 10; i++) {
         if (points >= pointsList[i]) {
           let index = i;
-          console.log(index);
           status = "splice";
           index == 0
             ? displayMessage("highscore")
@@ -54,13 +52,6 @@ const getName = (() => {
         }
       }
     }
-
-    // if (pointsList.length < 10) {
-    //   status = "push";
-    //   document.addEventListener("keypress", (e) => {
-    //     submitName(e, status);
-    //   });
-    // }
   }
 
   function displayMessage(message) {
