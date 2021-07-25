@@ -15,7 +15,7 @@ const getName = (() => {
 
   //get local data
   let data = getLocalData();
-  if (data === null) data = [];
+  if (data === null || data === undefined) data = [];
 
   compareToLeaderboard(points);
 

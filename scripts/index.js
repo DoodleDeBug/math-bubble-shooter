@@ -140,7 +140,7 @@ const game = (() => {
   function startTimer() {
     let interval = setInterval(countdown, 1000);
     let counter = 0;
-    let allocatedTime = 60;
+    let allocatedTime = 30;
 
     function convertSeconds(s) {
       let mins = Math.floor(s / 60);
@@ -156,10 +156,10 @@ const game = (() => {
       timerDisplay.innerText = convertSeconds(allocatedTime - counter);
 
       if (counter == allocatedTime) {
-        alert("game over");
         clearInterval(interval);
         removeBubbleListener();
         compileResults();
+        alert("Game Over");
         intermediatePage();
       }
     }
@@ -175,7 +175,7 @@ const game = (() => {
   }
 
   function compileResults() {
-    const resultsList = {};
+    let resultsList = {};
     let points = 0;
 
     for (let i = 0; i < qNum - 1; i++) {
