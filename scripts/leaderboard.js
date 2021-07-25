@@ -19,7 +19,6 @@ const leaderboardControl = (() => {
   function displayLeaderboard() {
     let data = getLocalData();
     if (data === null) data = [];
-    if (data.length > 10) data.splice(10);
 
     //cache DOM
     const leaderboard = document.querySelector(".leaderboard");
@@ -66,7 +65,8 @@ const leaderboardControl = (() => {
     } else if (gameOption == "division") {
       leaderboardType = JSON.parse(localStorage.getItem("divisionLeaderboard"));
     }
-    console.table(leaderboardType);
+
+    if (leaderboardType.length > 10) leaderboardType.splice(10);
     return leaderboardType;
   }
 })();

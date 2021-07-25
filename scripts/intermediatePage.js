@@ -17,8 +17,6 @@ const getName = (() => {
   let data = getLocalData();
   if (data === null) data = [];
 
-  console.table(data);
-
   compareToLeaderboard(points);
 
   function compareToLeaderboard(points) {
@@ -28,8 +26,6 @@ const getName = (() => {
     data.forEach((user) => {
       pointsList.push(user[1]);
     });
-
-    console.log(pointsList);
 
     if (pointsList.length == 0) {
       status = "push";
