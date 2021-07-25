@@ -21,6 +21,9 @@
   width: 100%;
   padding: 2rem 4rem;
   overflow: scroll;
+  background-image: url("./../images/bg.png");
+  background-attachment: fixed;
+  opacity: 0.9;
 }
 
 h1 {
@@ -34,13 +37,15 @@ main {
   margin: 1rem auto;
   flex-wrap: wrap;
   max-width: 1200px;
+  background-color: rgba(80, 53, 249, 0.7);
+  border-radius: $standardBorderRadius;
 
   div {
     @include flexCenter();
     justify-content: flex-start;
     list-style: none;
     color: white;
-    margin-top: 5px;
+    margin: 5px 1rem 0;
     font-size: 30px;
     min-width: 300px;
     height: 70px;
@@ -49,7 +54,8 @@ main {
       margin-left: 1rem;
 
       .fullQ {
-        width: 200px;
+        min-width: 220px;
+        padding: 0 5px;
       }
     }
     img {

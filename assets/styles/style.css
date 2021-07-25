@@ -333,6 +333,9 @@
   top: 0;
   height: 100%;
   width: 100%;
+  background-image: url("./../images/bg.png");
+  background-attachment: fixed;
+  opacity: 0.9;
   flex-direction: column;
   padding: 4rem 20%;
 }
@@ -343,7 +346,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 1rem;
-  background-color: rgba(78, 52, 249, 0.5);
+  background-color: rgba(80, 53, 249, 0.7);
   border-radius: 5px;
   font-size: 50px;
   min-width: 300px;
@@ -425,6 +428,9 @@
   padding: 0 2rem 3rem;
   z-index: 0;
   overflow: scroll;
+  background-image: url("./../images/bg.png");
+  background-attachment: fixed;
+  opacity: 0.9;
 }
 
 .center {

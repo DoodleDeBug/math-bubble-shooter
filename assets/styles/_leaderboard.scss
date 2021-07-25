@@ -10,6 +10,9 @@
   width: 100%;
   padding: 2rem 4rem;
   position: fixed;
+  background-image: url("./../images/bg.png");
+  background-attachment: fixed;
+  opacity: 0.9;
 }
 
 .header {
@@ -26,7 +29,7 @@ ul {
   @include flexCenter();
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgba(80, 53, 249, 0.5);
+  background-color: rgba(79, 53, 249, 0.5);
   color: white;
   list-style: none;
   padding: 1rem;

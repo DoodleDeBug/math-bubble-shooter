@@ -45,6 +45,9 @@
   padding: 0 2rem 3rem;
   z-index: 0;
   overflow: scroll;
+  background-image: url("./../images/bg.png");
+  background-attachment: fixed;
+  opacity: 0.9;
 }
 
 .center {
