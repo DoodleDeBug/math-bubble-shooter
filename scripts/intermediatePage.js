@@ -27,6 +27,7 @@ const getName = (() => {
       pointsList.push(user[1]);
     });
 
+    console.table(pointsList);
     if (pointsList.length == 0) {
       status = "push";
       displayMessage("highscore");
@@ -35,7 +36,7 @@ const getName = (() => {
       });
     } else {
       for (let i = 0; i < 10; i++) {
-        if (points >= pointsList[i]) {
+        if (points > parseInt(pointsList[i])) {
           let index = i;
           status = "splice";
           index == 0
