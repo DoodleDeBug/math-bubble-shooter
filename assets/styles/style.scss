@@ -38,12 +38,13 @@
   display: none;
 }
 
-main {
+.gamePage {
   @extend .modal;
   justify-content: space-around;
   background-color: $background;
   padding: 0 2rem 3rem;
   z-index: 0;
+  overflow: scroll;
 }
 
 .center {

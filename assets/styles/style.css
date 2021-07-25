@@ -344,7 +344,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 1rem;
-  background-color: rgba(80, 53, 249, 0.95);
+  background-color: rgba(78, 52, 249, 0.5);
   border-radius: 5px;
   font-size: 50px;
   min-width: 300px;
@@ -357,6 +357,8 @@
   justify-content: center;
   align-items: center;
   color: white;
+  margin: 1rem 0;
+  font-size: 20px;
 }
 .intermediatePage .center {
   display: flex;
@@ -370,9 +372,6 @@
   font-size: 40px;
 }
 .intermediatePage .center input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   font-size: 50px;
   height: 80px;
@@ -394,7 +393,7 @@
   font-family: sans-serif;
 }
 
-.modal, main {
+.modal, .gamePage {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -407,7 +406,7 @@
   padding: 20%;
   z-index: 100;
 }
-.modal .modal-contents, main .modal-contents {
+.modal .modal-contents, .gamePage .modal-contents {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -421,11 +420,12 @@
   display: none;
 }
 
-main {
+.gamePage {
   justify-content: space-around;
   background-color: #17067b;
   padding: 0 2rem 3rem;
   z-index: 0;
+  overflow: scroll;
 }
 
 .center {

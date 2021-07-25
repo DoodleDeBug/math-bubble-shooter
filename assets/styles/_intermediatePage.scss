@@ -17,7 +17,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 1rem;
-    background-color: rgba(80, 53, 249, 0.95);
+    background-color: hsla(248, 94%, 59%, 0.5);
     border-radius: $standardBorderRadius;
     font-size: 50px;
     min-width: 300px;
@@ -30,6 +30,8 @@
   .pointsDisplay {
     @include flexCenter();
     color: white;
+    margin: 1rem 0;
+    font-size: 20px;
   }
   .center {
     @include flexCenter();
@@ -42,7 +44,6 @@
     }
 
     input {
-      @include flexCenter();
       text-align: center;
       font-size: 50px;
       height: 80px;

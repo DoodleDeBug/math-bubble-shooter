@@ -131,7 +131,7 @@ ul {
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgba(80, 53, 249, 0.95);
+  background-color: rgba(80, 53, 249, 0.5);
   color: white;
   list-style: none;
   padding: 1rem;
@@ -170,6 +170,7 @@ footer {
   height: 100%;
   width: 100%;
   padding: 2rem 4rem;
+  overflow: scroll;
 }
 
 h1 {
@@ -200,6 +201,9 @@ main div {
 }
 main div span {
   margin-left: 1rem;
+}
+main div span .fullQ {
+  width: 200px;
 }
 main div img {
   height: 30px;

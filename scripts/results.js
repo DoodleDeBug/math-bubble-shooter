@@ -24,6 +24,7 @@ const results = (() => {
     q++;
 
     const fullQuestion = document.createElement("span");
+    fullQuestion.classList.add("fullQ");
     fullQuestion.innerText = `${question}`;
     div.appendChild(fullQuestion);
 
