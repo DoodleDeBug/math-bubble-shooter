@@ -112,9 +112,6 @@
   width: 100%;
   padding: 2rem 4rem;
   position: fixed;
-  background-image: url("./../images/bg.png");
-  background-attachment: fixed;
-  opacity: 0.9;
 }
 
 .header {
@@ -174,9 +171,17 @@ footer {
   width: 100%;
   padding: 2rem 4rem;
   overflow: scroll;
+}
+
+.bg {
+  position: fixed;
   background-image: url("./../images/bg.png");
   background-attachment: fixed;
-  opacity: 0.9;
+  opacity: 0.5;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
 }
 
 h1 {
