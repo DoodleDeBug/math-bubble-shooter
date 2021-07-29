@@ -71,6 +71,7 @@
   border-radius: 50%;
   height: 100px;
   width: 100px;
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.26);
 }
 .bubbleContainer .bubble:hover {
   height: 110px;
