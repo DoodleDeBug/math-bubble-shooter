@@ -3,7 +3,6 @@ const game = (() => {
   const optionBtns = document.querySelectorAll(".options");
   const modal = document.querySelector(".modal");
 
-  const main = document.querySelector("main");
   const container = document.querySelector(".bubbleContainer"); /////////////////////////bubble container
 
   const qBox = document.querySelector(".questionBox");
@@ -140,7 +139,7 @@ const game = (() => {
   function startTimer() {
     let interval = setInterval(countdown, 1000);
     let counter = 0;
-    let allocatedTime = 30;
+    let allocatedTime = 60;
 
     function convertSeconds(s) {
       let mins = Math.floor(s / 60);
@@ -187,12 +186,8 @@ const game = (() => {
       }
     }
 
-    saveLocal();
-
-    function saveLocal() {
-      localStorage.setItem("resultsList", JSON.stringify(resultsList));
-      localStorage.setItem("currentPoints", points);
-    }
+    localStorage.setItem("resultsList", JSON.stringify(resultsList));
+    localStorage.setItem("currentPoints", points);
   }
 
   function intermediatePage() {
