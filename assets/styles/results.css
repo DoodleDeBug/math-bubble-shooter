@@ -170,7 +170,7 @@ footer {
   height: 100%;
   width: 100%;
   padding: 2rem 4rem;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .bg {
