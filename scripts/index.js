@@ -158,7 +158,6 @@ const game = (() => {
         clearInterval(interval);
         removeBubbleListener();
         compileResults();
-        alert("Game Over");
         intermediatePage();
       }
     }
