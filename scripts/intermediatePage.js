@@ -8,7 +8,7 @@ const getName = (() => {
 
   //get points
   const points = localStorage.getItem("currentPoints");
-  pointsDisplay.innerText = `${points} points`;
+  pointsDisplay.innerText = `You scored ${points} points`;
 
   //get gameOption
   const gameOption = localStorage.getItem("gameOption");
