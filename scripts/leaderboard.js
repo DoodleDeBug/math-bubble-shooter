@@ -1,6 +1,6 @@
 const leaderboardControl = (() => {
   //get gameOption
-  const gameOption = localStorage.getItem("gameOption");
+  const gameOption = sessionStorage.getItem("gameOption");
 
   //varaibles
   let leaderboardType;

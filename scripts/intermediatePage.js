@@ -7,11 +7,11 @@ const getName = (() => {
   let input;
 
   //get points
-  const points = localStorage.getItem("currentPoints");
+  const points = sessionStorage.getItem("currentPoints");
   pointsDisplay.innerText = `You scored ${points} points`;
 
   //get gameOption
-  const gameOption = localStorage.getItem("gameOption");
+  const gameOption = sessionStorage.getItem("gameOption");
 
   //get local data
   let data = getLocalData();

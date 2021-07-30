@@ -32,7 +32,7 @@ const game = (() => {
     }
 
     modal.classList.toggle("hidden");
-    localStorage.setItem("gameOption", gameOption);
+    sessionStorage.setItem("gameOption", gameOption);
     nextQ(gameOption);
     startTimer();
   }
@@ -185,8 +185,8 @@ const game = (() => {
       }
     }
 
-    localStorage.setItem("resultsList", JSON.stringify(resultsList));
-    localStorage.setItem("currentPoints", points);
+    sessionStorage.setItem("resultsList", JSON.stringify(resultsList));
+    sessionStorage.setItem("currentPoints", points);
   }
 
   function intermediatePage() {

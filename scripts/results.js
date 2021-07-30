@@ -3,7 +3,7 @@ const results = (() => {
   const container = document.querySelector("main");
 
   //get results
-  const resultsList = JSON.parse(localStorage.getItem("resultsList"));
+  const resultsList = JSON.parse(sessionStorage.getItem("resultsList"));
 
   let q = 1;
   let pos = 0;
