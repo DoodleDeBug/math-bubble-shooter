@@ -27,7 +27,6 @@ const getName = (() => {
       pointsList.push(user[1]);
     });
 
-    console.table(pointsList);
     if (pointsList.length == 0) {
       status = "push";
       displayMessage("highscore");
