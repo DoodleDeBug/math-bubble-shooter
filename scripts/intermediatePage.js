@@ -34,7 +34,7 @@ const getName = (() => {
         submitName(e, status);
       });
     } else {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 10 && i < pointsList.length; i++) {
         if (points > parseInt(pointsList[i])) {
           let index = i;
           status = "splice";
