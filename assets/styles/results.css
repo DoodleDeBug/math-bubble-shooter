@@ -112,6 +112,7 @@
   width: 100%;
   padding: 2rem 4rem;
   position: fixed;
+  overflow: auto;
 }
 
 .header {
