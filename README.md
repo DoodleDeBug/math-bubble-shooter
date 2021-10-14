@@ -1,8 +1,9 @@
-# math-bubble-shooter
-game for TOP game-jam, theme: edutainment
+# Math Bubble Shooter
+A game developed for TOP game-jam
+Theme: Edutainment
 
 ## About:
-I'm making this game for the game jam. It is similar to the times table game I made, but it will be more interactive/playable and there will be other sums/questions, not just multiplication. Eventually, it will be split into age ranges, but I probably won't have time for that initially so I will do it later. I ended up getting all the main functionality of the game, including the leaderboard, in 10 working days.... now all that's left is the polish!
+I'm making this game for the game jam. It is similar to the times table game I made, but it will be more interactive/playable and there will be other sums/questions, not just multiplication. Eventually, it will be split into age ranges, but I probably won't have time for that initially so I will do it later. I ended up getting all the main functionality of the game, including the leaderboard, done in 10 working days.... now all that's left is the polish!
 
 ### MVP: (Got this done in ~4 days)
 * box that shows question
